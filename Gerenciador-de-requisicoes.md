@@ -1,2 +1,2 @@
-# Gerenciador-de-requisi-es-
+# Gerenciador-de-requisicoes
 Um gerenciador de requisições 
