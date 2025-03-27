@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Lista de Clientes</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./Cliente.css">
+
+</head>
+<body>
+  <script src="Clientes.js"></script>
+  <main class="fundo">
+    <section class="image"> 
+      <header>
+        <h1 class="Cadastro-Cliente">Clientes</h1>
+        <button class="voltar" onclick="window.history.back();">
+            <img src="../img/voltar0.png" alt="Voltar">
+      </button>
+      <button class="image-44" onclick="window.location.href='../Perfil/Perfil.html';">
+            <img src="../img/image-40.png" alt="Perfil">
+          </button>
+      </header>
+      
+      <table id="clientesTable">
+        <thead>
+          <tr>
+            <th>Código do cliente</th>
+            <th>Nome do cliente</th>
+            <th>CNPJ do cliente</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Os dados serão inseridos aqui via JS -->
+        </tbody>
+      </table>
+      
+      <section class="cadastre-aqui-novo-usu-rio">
+        <a href="../Cadastro Cliente/Cadastro cliente.html" class="cadastre-aqui-novo-usu-rio-span2">Cadastrar novo cliente.</a>
+      </section> 
+    </section>
+  </main>
+</body>
+</html>

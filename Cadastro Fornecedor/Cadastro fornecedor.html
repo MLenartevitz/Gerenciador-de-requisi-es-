@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="..img/trabalho-em-equipe.png" type="image/x-icon">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./Fornecedor.css">
+  <title>Cadastro Fornecedor</title>
+  <script>
+    function mascaraTelefone(tel) {
+      tel.value = tel.value.replace(/\D/g, '');
+      tel.value = tel.value.replace(/^(\d{2})(\d)/, '($1) $2');
+      tel.value = tel.value.replace(/(\d)(\d{4})$/, '$1-$2');
+    }
+  </script>
+</head>
+<script src="CadFornecedor.js"></script>
+<body>
+  <main class="fundo">
+    <section class="image">
+      <header>
+        <h1 class="Cadastro-Fornecedor">Cadastro Fornecedor</h1>
+        <button class="voltar" aria-label="Voltar à página anterior" onclick="window.history.back();">
+          <img src="../img/voltar0.png" alt="Ícone de Voltar">
+        </button>
+        <button class="image-4" onclick="window.location.href='../Perfil/Perfil.html';">
+          <img src="../img/image-40.png" alt="Logo ou Ícone">
+        </button>
+      </header>
+      <nav class="navegacao">
+        <ul>
+          <li>
+            <form action="#" method="POST">
+              <div class="barra-nome">
+                <input type="text" id="nome" class="input-info" placeholder="Digite o nome do fornecedor" required>
+              </div>
+
+              <div class="barra-end-fornecedor">
+                <input type="text" id="endereco" class="input-info" placeholder="Digite o endereço do fornecedor"
+                  required>
+              </div>
+
+              <div class="barra-email-fornecedor">
+                <input type="email" id="email" class="input-info" placeholder="Digite o e-mail do fornecedor" required>
+              </div>
+
+              <div class="barra-tel-fornecedor">
+                <input type="tel" id="telefone" class="input-info"  maxlength="15"placeholder="Digite o telefone do fornecedor"
+                  required oninput="mascaraTelefone(this)">
+              </div>
+
+              <div class="barra-tipo-peca">
+                <input type="text" id="tipo_peca" class="input-info" placeholder="Digite o tipo de peça fornecida"
+                  required>
+              </div>
+
+              <div class="barra-quantidade">
+                <input type="number" id="quantidade" class="input-info" placeholder="Digite a quantidade em estoque"
+                  required>
+              </div>
+
+              <div class="barra-marca">
+                <input type="text" id="marca" class="input-info" placeholder="Digite a marca da peça" required>
+              </div>
+
+              <div class="barra-descricao">
+                <textarea id="descricao" class="input-info" placeholder="Descreva a peça" rows="4" required></textarea>
+              </div>
+
+              <div class="barra-responsavel">
+                <input type="text" id="responsavel" class="input-info" placeholder="Digite o nome do responsável"
+                  required>
+              </div>
+              <div>
+                <button type="submit" class="bot-es">
+                  <a href="\Home.html" class="login3">Cadastrar</a>
+                </button>
+              </div>
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Editar Cliente</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+  <h1>Editar Cliente</h1>
+  
+  <form id="editarClienteForm">
+    <input type="hidden" id="cod_cliente">
+    
+    <label>Nome:</label>
+    <input type="text" id="nome_cliente" required>
+    
+    <label>CNPJ:</label>
+    <input type="text" id="CNPJ_cliente" required>
+    
+    <button type="submit">Salvar Alterações</button>
+  </form>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function () {
+      const urlParams = new URLSearchParams(window.location.search);
+      const cod_cliente = urlParams.get('cod_cliente');
+
+      if (cod_cliente) {
+        const response = await fetch(`http://localhost:5500/api/cliente/${cod_cliente}`);
+        const cliente = await response.json();
+        
+        document.getElementById('cod_cliente').value = cliente.cod_cliente;
+        document.getElementById('nome_cliente').value = cliente.nome_cliente;
+        document.getElementById('CNPJ_cliente').value = cliente.CNPJ_cliente;
+      }
+      
+      document.getElementById('editarClienteForm').addEventListener('submit', async function (event) {
+        event.preventDefault();
+        
+        const nome_cliente = document.getElementById('nome_cliente').value;
+        const CNPJ_cliente = document.getElementById('CNPJ_cliente').value;
+        
+        await fetch(`http://localhost:5500/api/cliente/${cod_cliente}`, {
+          method: 'PUT',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ nome_cliente, CNPJ_cliente })
+        });
+
+        alert("Cliente atualizado com sucesso!");
+        window.location.href = "Clientes.html";
+      });
+    });
+  </script>
+</body>
+</html>

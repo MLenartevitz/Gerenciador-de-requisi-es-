@@ -1,0 +1,116 @@
+.image {
+    background: var(--cor-fundo, #f4f4f4);
+    background-size: auto;
+    border-radius: 50px;
+    border-style: solid;
+    border-color: #000000;
+    border-width: 1px;
+    width: 808px;
+    height: 850px;
+    position: relative;
+    z-index: -1;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-start;
+}
+
+.grid {
+    border: 2px solid #000;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(650px, 1fr));
+    gap: 10px;
+    padding: 20px;
+}
+
+.sidebar {
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+    margin-top: 50px;
+}
+
+button {
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Classe para esconder o modal */
+.hidden {
+    display: none;
+}
+
+.modal {
+    display: none;
+    /* Inicialmente escondido */
+    position: fixed;
+    /* Fixa o modal na tela */
+    top: 50%;
+    /* Posiciona o modal no meio verticalmente */
+    left: 50%;
+    /* Posiciona o modal no meio horizontalmente */
+    transform: translate(-50%, -50%);
+    /* Ajusta o modal para ficar exatamente no centro */
+    background-color: rgba(0, 0, 0, 0.5);
+    /* Fundo semi-transparente */
+    z-index: 1000;
+    /* Garante que o modal fique sobre outros elementos */
+    width: 50%;
+    /* Define a largura do modal */
+    max-width: 600px;
+    /* Tamanho máximo para o modal */
+    padding: 5px;
+    border-radius: 5px;
+    /* Bordas arredondadas */
+    box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
+    /* Adiciona sombra sutil */
+}
+
+/* Estilos para o conteúdo do modal */
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    /* Bordas arredondadas também para o conteúdo */
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    /* Sombra sutil no conteúdo do modal */
+}
+
+.letra {
+    color: var(--branco-generico, #ffffff);
+    font-family: "RobotoSlab-Bold", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+
+}
+
+.bot-es7 {
+    background: var(--cor-principal, #71d0ff);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 720px;
+    height: 78px;
+    display: center;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border: 1px solid #000000;
+}
+
+.selecionado {
+    background-color: #f0f0f0;
+    border: 2px solid #007bff;
+  }
+  

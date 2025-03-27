@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+  <title>Cadastro Cliente</title>
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./Cliente.css">  
+</head>
+<body>
+  <script src="./CadCliente.js"></script>
+  <main class="fundo">
+    <section class="image"> 
+      <header>
+        <h1 class="Cadastro-Cliente">Cadastro Cliente</h1>
+        <button class="voltar" onclick="window.history.back();">
+          <img src="../img/voltar0.png" alt="Voltar">
+        </button>
+  
+        <button class="image-4" onclick="window.location.href='../Perfil/Perfil.html';">
+          <img src="../img/image-40.png" alt="Perfil">
+        </button>
+      </header>
+
+      <nav class="navegacao">
+        <ul>
+          <li>
+            <form id="cadastroClienteForm">
+              <div class="barra-nome-fantasia">
+                <input type="text" id="nome" class="input-info" placeholder="Nome fantasia" required>
+              </div>
+
+              <div class="barra-CNPJ">
+                <input type="text" id="CNPJ" class="input-info2" placeholder="CNPJ" required maxlength="18" oninput="formatarCNPJ(event)">
+              </div>
+
+              <button type="submit" class="bot-es">
+                <a  class="login3">Cadastrar</a>
+              </button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+</body>
+</html>

@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Empresas {
+  cod_empresa Int     @id @default(autoincrement())
+  nome_empresa String
+  CNPJ_empresa String @unique
+  Projetos     Projeto[]
+}
+
+model Cliente {
+  cod_cliente  Int     @id @default(autoincrement())
+  nome_cliente String  
+  CNPJ_cliente String  @unique
+  Projetos     Projeto[]
+}
+
+model Projeto {
+  cod_proj      Int      @id @default(autoincrement())
+  num_proposta  Int
+  titulo        String
+  cod_empresa   Int
+  cod_cliente   Int
+  data_entrega  DateTime
+  num_pedido    Int
+  num_itempedido Int
+  data_pedido   DateTime
+  resp_pedido   String
+  status        Boolean
+  empresa       Empresas @relation(fields: [cod_empresa], references: [cod_empresa])
+  cliente       Cliente  @relation(fields: [cod_cliente], references: [cod_cliente])
+  Requisicoes   Requisicoes[]
+}
+
+model Usuario {
+  cod_user     Int             @id @default(autoincrement()) // Chave primária com auto incremento
+  nome_user    String          // Nome do usuário
+  funcao       String          // Função do usuário
+  senha        String          // Campo para armazenar o hash da senha
+  data_inicio  DateTime        // Data de início do usuário
+  data_inativo DateTime?       // Data em que o usuário foi desativado (opcional)
+  ativo        Boolean         // Status ativo ou inativo do usuário
+  Requisicoes  Requisicoes[]   // Relacionamento com o modelo de Requisições
+}
+
+model Produtos {
+  cod_produto  Int     @id @default(autoincrement())
+  cod_omie     Int
+  nome_produto String
+  qtde         Int
+}
+
+model Requisicoes {
+  num_requisicao Int      @id @default(autoincrement())
+  cod_proj       Int
+  data_requisicao DateTime
+  cod_user       Int
+  rev_req        String
+  projeto        Projeto @relation(fields: [cod_proj], references: [cod_proj])
+  usuario        Usuario @relation(fields: [cod_user], references: [cod_user])
+  ItensRequisicao Item_requisicao[]
+}
+
+model Item_requisicao {
+  num_item_req Int        @id @default(autoincrement()) // ID do item
+  descricao    String
+  qtde         Int
+  observacao   String
+  requisicao   Requisicoes @relation(fields: [num_requisicao], references: [num_requisicao])
+  num_requisicao Int
+}
+
+
+model Fornecedores {
+  cod_fornecedor  Int    @id @default(autoincrement()) // Chave primária
+  nome            String
+  endereco        String
+  email           String @unique // Email será único
+  telefone        String
+  tipo_peca       String
+  quantidade      Int
+  marca           String
+  descricao       String
+  responsavel     String
+}

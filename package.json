@@ -1,0 +1,24 @@
+{
+  "name": "your-project-name",
+  "version": "1.0.0",
+  "type": "module",
+  "dependencies": {
+    "@prisma/client": "^6.3.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "cors": "^2.8.5",
+    "date-fns": "^4.1.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mariadb": "^3.4.0",
+    "sudo": "^1.0.3"
+  },
+  "devDependencies": {
+    "prisma": "^6.3.0"
+  },
+  "scripts": {
+    "start": "node server.js",
+    "dev": "npx prisma migrate dev"
+  }
+}

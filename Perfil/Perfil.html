@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./Perfil.css">
+  <title>Perfil</title>
+</head>
+
+<body onload="carregarPerfil()">
+  <script src="Perfil.js"></script>
+  <main class="fundo">
+    <section class="image">
+      <button class="voltar" aria-label="Voltar à página anterior" onclick="window.history.back();">
+        <img src="../img/voltar0.png" alt="Ícone de Voltar">
+      </button>
+      <nav class="navegacao">
+        <ul>
+          <div class="perfil-info">
+            <div class="perfil-foto">
+              <img src="../img/ale.jpg" alt="Foto de Perfil">
+            </div>
+            <h2 class="perfil-nome">
+              <span id="nomeUsuario">Carregando...</span> -
+              <span class="perfil-codigo">Cód <span id="codigoUsuario">...</span></span>
+            </h2>
+          </div>
+
+          <li>
+            <button type="submit" class="bot-es">
+              <a href="./PerfilInfo.html" class="informacoes">Informações</a>
+            </button>
+          </li>
+          <li>
+            <button type="submit" class="bot-es2" onclick="logout()">
+              <span class="sair">Sair</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+</body>
+
+</html>

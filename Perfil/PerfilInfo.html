@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./Perfil info.css">
+  <title>Perfil</title>
+</head>
+<body onload="carregarPerfil()">
+<script src="PerfilInfo.js"></script>
+  <main class="fundo">
+    <section class="image">
+      <button class="voltar" aria-label="Voltar à página anterior" onclick="window.history.back();">
+        <img src="../img/voltar0.png" alt="Ícone de Voltar">
+      </button>
+      <nav class="navegacao">
+        <ul>
+          <div class="perfil-info">
+            <div class="perfil-foto">
+              <img id="fotoPerfil" src="../img/ale.jpg" alt="Foto de Perfil">
+            </div>
+          </div>  
+        
+          <div class="barra-codigo-usuario">
+            <input type="text" id="codUser" class="input-info" placeholder="Código do Usuário" readonly>
+          </div>
+          <div class="barra-nome-usuario">
+            <input type="text" id="nomeUser" class="input-info" placeholder="Nome do Usuário" readonly>
+          </div>
+          <div class="barra-funcao">
+            <input type="text" id="funcao" class="input-info" placeholder="Função" readonly>
+          </div>
+          <div class="barra-data">
+            <input type="text" id="dataInicio" class="input-info" placeholder="Data de Início" readonly>
+          </div>                  
+          <div class="barra-ativo">
+            <input type="checkbox" id="ativo" class="input-info" disabled>
+            <label for="ativo">Ativo</label>
+          </div>
+          <li>
+            <button type="button" class="bot-es" onclick="irParaPaginaDeEdicao()">
+              <a class="login3">Editar</a>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+</body>
+</html>

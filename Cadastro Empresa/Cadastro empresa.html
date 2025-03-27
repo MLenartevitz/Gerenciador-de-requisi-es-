@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./Empresa.css">
+  <title>Cadastro Empresa</title>
+
+
+</head>
+
+<body>
+  <script src="CadEmpresa.js"></script>
+  <main class="fundo">
+    <section class="image">
+      <header>
+        <h1 class="Cadastro-Empresa">Cadastro Empresa</h1>
+        <button class="voltar" aria-label="Voltar à página anterior" onclick="window.history.back();">
+          <img src="../img/voltar0.png" alt="Ícone de Voltar">
+        </button>
+        <button class="image-4" onclick="window.location.href='../Perfil/Perfil.html';">
+          <img src="../img/image-40.png" alt="Logo ou Ícone">
+        </button>
+      </header>
+
+      <nav class="navegacao">
+        <ul>
+          <li>
+            <form id="cadastroEmpresaForm">
+              <div class="barra-nome-fantasia">
+                <input type="text" id="nome" class="input-info" placeholder="Nome fantasia" required>
+              </div>
+
+              <div class="barra-CNPJ">
+                <input type="text" id="CNPJ" class="input-info2" placeholder="CNPJ" required maxlength="18" oninput="formatarCNPJ(event)">
+              </div>
+
+              <button type="submit" class="bot-es">
+                <a  class="login3">Cadastrar</a>
+              </button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+</body>
+
+</html>

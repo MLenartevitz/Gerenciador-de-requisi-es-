@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./Usuário.css">
+  <title>Cadastro Usuário</title>
+</head>
+
+<body>
+  <script src="./CadUsuario.js"></script>
+  <main class="fundo">
+    <section class="image">
+      <header>
+        <h1 class="Cadastro-Usuario">Cadastro Usuário</h1>
+        <button class="voltar" aria-label="Voltar à página anterior" onclick="window.history.back();">
+          <img src="../img/voltar0.png" alt="Ícone de Voltar">
+        </button>
+      </header>
+
+      <nav class="navegacao">
+        <ul>
+          <li>
+            <form id="cadastro-form" action="#" method="POST" onsubmit="cadastrarUsuario(event)">
+              <div class="barra-nome-usuario">
+                <input type="text" id="nome" class="input-info" placeholder="Digite o nome do usuário" required>
+              </div>
+
+              <div class="barra-funcao">
+                <input type="text" id="funcao" class="input-info" placeholder="Digite a função do usuário" required>
+              </div>
+
+              <legend>Data Início:</legend>
+              <div class="barra-data">
+                <input type="date" id="data" class="input-info" placeholder="dd/mm/yyyy" required>
+              </div>
+
+              <div class="barra-senha">
+                <input type="password" id="senha" class="input-info2" placeholder="Digite a senha" required>
+                <img id="senha-icon" class="eye-icon" onclick="togglePassword('senha', 'senha-icon')"
+                  src="../img/eye.png">
+              </div>
+
+              <div class="barra-senha">
+                <input type="password" id="senha-confirm" class="input-info2" placeholder="Confirme a senha" required>
+                <img id="senha-confirm-icon" class="eye-icon"
+                  onclick="togglePassword('senha-confirm', 'senha-confirm-icon')" src="../img/eye.png">
+              </div>
+
+              <!-- Campo para 'ativo' (checkbox) -->
+              <div class="barra-ativo">
+                <label for="ativo">Usuário Ativo</label>
+                <input type="checkbox" id="ativo" name="ativo" checked> <!-- Definido como "checked" por padrão -->
+              </div>
+
+              <button type="submit" class="bot-es" onclick="irLogin()">
+                <a class="login3">Cadastrar</a>
+              </button>
+            </form>
+          </li>
+        </ul>
+      </nav>
+
+      <!-- Área para exibir código gerado ou erro -->
+      <div id="responseMessage" style="margin-top: 20px;"></div>
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,241 @@
+/* Reset básico para garantir o controle do layout */
+a, button, input, select, h1, h2, h3, h4, h5, * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    border: none;
+    text-decoration: none;
+    background: none;
+    -webkit-font-smoothing: antialiased;
+}
+
+menu, ol, ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+.fundo {
+    background: url('../img/login.png') center center no-repeat;
+    background-size: cover; 
+    height: max-content; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    z-index: 1;
+    padding: 20px;  
+    box-sizing: border-box; 
+}
+
+/* Alinhamento dos campos de entrada */
+.barra-email, .barra-senha, .barra-nome, .barra-quantidade, .barra-codigo-omie, .barra-nome-fantasia, .barra-CNPJ,
+.barra-nome-usuario, .barra-funcao, .barra-data, .barra-numero-proposta, .barra-nome-do-projeto, .barra-empresa, 
+.barra-cliente, .barra-numero-pedido, .barra-numero-itempedido, .barra-responsavel, .barra-numero-item-requirido,
+.barra-requisicao, .barra-codigo-produto, .barra-tipo, .barra-numero-da-requisicao, .barra-codigo-projeto,
+.barra-codigo-usuario, .barra-revisor, .barra-end-fornecedor, .barra-email-fornecedor, .barra-tel-fornecedor,
+.barra-tipo-peca, .barra-marca {
+    width: 100%;
+    max-width: 720px;
+    height: 78px;
+    position: relative;
+    margin-bottom: 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.barra-descricao {
+    width: 100%;
+    max-width: 720px;
+    height: 200px;
+    position: relative;
+    margin-bottom: 29px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Estilos dos campos de entrada */
+.input-info, .input-info2, .input-info3 {
+    background: var(--branco-generico, #ffffff);
+    border-radius: 16px;
+    width: 100%;
+    height: 100%;
+    padding: 0 16px;
+    font-size: 30px;
+    color: #333;
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+/* Alinhamento do texto nas labels */
+.e-mail, .senha, .nome, .quantidade, .codigo-omie, .data, .CNPJ, .funcao, .descricao {
+    color: var(--cor-fonte-secundaria, #a9b1b4);
+    font-family: "RobotoSlab-Bold", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.label-data, legend {
+    font-size: 20px;
+    color: #333;
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+}
+
+/* Estilo do botão de login */
+.bot-es, .bot-es2, .bot-es3, .bot-es4, .bot-es5, .bot-es6 {
+    background: var(--cor-principal, #71d0ff);
+    border-radius: 16px;
+    width: 100%;
+    max-width: 720px;
+    height: 78px;
+    display: center;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    border: 1px solid #000000;
+    z-index: 1;
+}
+
+.bot-es:hover , .bot-es2:hover , .bot-es3:hover , .bot-es4:hover , .bot-es5:hover , .bot-es6:hover {
+    background-color: #57b4e1;
+    z-index: 1;
+}
+
+.login3 {
+    color: var(--branco-generico, #ffffff);
+    font-family: "RobotoSlab-Bold", sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    z-index: 1;
+
+}
+
+/* Texto para o link de cadastro */
+.cadastre-aqui-novo-usu-rio {
+    text-align: center;
+    font-family: "RobotoSlab-Bold", sans-serif;
+    font-size: 18px;
+    font-weight: 700;
+    margin-top: 29px;
+    margin-bottom: 29px;
+    z-index: 1;
+
+}
+
+.cadastre-aqui-novo-usu-rio-span2 {
+    color: var(--cor-principal, #71d0ff);
+    margin-bottom: 29px;
+
+}
+
+/* Estilos para a home e outros componentes */
+.home {
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5));
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-cadastros {
+    position: absolucte;
+    inset: 0;
+}
+
+.home2, .Cadastro-Produto, .Cadastro-Empresa, .Cadastro-Cliente, .Cadastro-Usuario, .Cadastro-Projeto, .Requisicao-de-item, .Cadastro-requisicoes, .Cadastro-Fornecedor {
+    color: #000000;
+    text-align: left;
+    font-family: "RobotoSlab-Bold", sans-serif;
+    font-size: 39.8px;
+    font-weight: 700;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 1;
+}
+
+.loogin {
+    color: #000000;
+    text-align: left;
+    font-family: "RobotoSlab-Bold", sans-serif;
+    font-size: 40px;
+    font-weight: 700;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 321px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 1;
+}
+
+.voltar {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    left: 50px;
+    top: 38px;
+    object-fit: cover;
+    cursor: pointer;
+    z-index: 1;
+    transition: background 0.3s ease;
+}
+
+.item-requisicao, .requisicao, .projeto, .produto, .cadastrar-empresa, .cliente, .informacoes, .sair, .fornecedor  {
+    color: var(--branco-generico, #ffffff);
+    font-family: "RobotoSlab-Bold", sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 15px;
+}
+
+.image-4 {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    left: 680px;
+    top: 38px;
+    object-fit: cover;
+    z-index: 1;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+ul, li{
+    top: 60px;
+    margin: 29px;
+    padding: 0;
+    position: relative;
+}
+
+.eye-icon, eyeopen.png{
+    cursor: pointer;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 80px;
+  }
+  

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./Home.css">
+  <title>Home</title>
+
+</head>
+
+<body>
+  <main class="fundo">
+    <section class="image">
+      <header>
+        <h1 class="home2">Home</h1>
+        <button class="image-4" onclick="window.location.href='../Perfil/Perfil.html';">
+          <img src="../img/image-40.png" alt="Logo ou Ícone">
+        </button>
+      </header>
+
+      <nav class="navegacao">
+        <ul>
+          <li>
+            <button type="button" class="bot-es2" onclick="openModal();">
+              <span class="requisicao"> Requisição</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="bot-es3" onclick="window.location.href='../Projeto/Projeto.html';">
+              <span class="projeto">Projeto</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="bot-es4"
+              onclick="window.location.href='../Cadastro Produto/Cadastro produto.html';">
+              <span class="produto">Produto</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="bot-es5"
+              onclick="window.location.href='../Cadastro Empresa/Cadastro empresa.html';">
+              <span class="cadastrar-empresa">Empresa</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="bot-es6" onclick="window.location.href='../Clientes/Clientes.html';">
+              <span class="cliente">Cliente</span>
+            </button>
+          </li>
+          <li>
+            <button type="button" class="bot-es6"
+              onclick="window.location.href='../Cadastro Fornecedor/Cadastro fornecedor.html';">
+              <span class="fornecedor">Fornecedor</span>
+            </button>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+
+  <!-- Modal de Nova Requisição -->
+  <div class="modal" id="myModal">
+    <div class="modal-content">
+      <h2>Escolha uma opção</h2>
+      <button onclick="novaRequisicao()">Nova requisição</button>
+      <button onclick="editarRequisicao()">Editar requisição</button>
+      <button onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    // Função para abrir a modal
+    function openModal() {
+      document.getElementById("myModal").style.display = "flex";
+    }
+    // Função para fechar a modal
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+    // Função para Nova Requisição
+    function novaRequisicao() {
+      window.location.href = '../Cadastro Requisição/Cadastro requisição.html';
+    }
+    // Função para Editar Requisição
+    function editarRequisicao() {
+      window.location.href = '../Editar Requisição/Editar requisição.html';
+    }
+  </script>
+</body>
+
+</html>

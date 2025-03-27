@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./Projeto.css">
+  <title>Cadastro Projeto</title>
+</head>
+
+<body>
+  <main class="fundo">
+    <section class="image">
+      <header>
+        <h1 class="Cadastro-Projeto">Cadastro Projeto</h1>
+        <button class="voltar" aria-label="Voltar à página anterior" onclick="window.history.back();">
+          <img src="../img/voltar0.png" alt="Ícone de Voltar">
+        </button>
+        <button class="image-4" onclick="window.location.href='../Perfil/Perfil.html';">
+          <img src="../img/image-40.png" alt="Logo ou Ícone">
+        </button>
+      </header>
+
+      <nav class="navegacao">
+        <ul>
+          <li>
+            <form id="cadastroForm">
+              <div class="barra-numero-proposta">
+                <input type="text" id="proposta" class="input-info" placeholder="Digite o número da proposta" required>
+              </div>
+
+              <div class="barra-nome-do-projeto">
+                <input type="text" id="projeto" class="input-info" placeholder="Digite o nome do projeto" required>
+              </div>
+
+              <div class="barra-empresa">
+                <select id="empresa" class="input-info" required>
+                  <option value="">Selecione a empresa</option>
+                </select>
+              </div>
+
+              <div class="barra-cliente">
+                <select id="cliente" class="input-info" required>
+                  <option value="">Selecione o cliente</option>
+                </select>
+              </div>
+
+              <legend>Data de entrega:</legend>
+              <div class="barra-data">
+                <input type="date" id="data" class="input-info" required>
+              </div>
+
+              <div class="barra-numero-pedido">
+                <input type="number" id="numpedido" class="input-info" placeholder="Digite o número do pedido" required>
+              </div>
+
+              <div class="barra-numero-itempedido">
+                <input type="number" id="numitempedido" class="input-info" placeholder="Digite o número do itempedido"
+                  required>
+              </div>
+
+              <legend>Data pedido:</legend>
+              <div class="barra-data">
+                <input type="date" id="datapedido" class="input-info" required>
+              </div>
+
+              <div class="barra-responsavel">
+                <select id="responsavel" class="input-info" required>
+                  <option value="">Selecione o responsável</option>
+                </select>
+              </div>
+
+              <div>
+                <button type="submit" class="bot-es">
+                  <a class="login3">Cadastrar</a>
+                </button>
+              </div>
+            </form>
+          </li>
+        </ul>
+      </nav>
+    </section>
+  </main>
+  <script src="CadProjeto.js" ></script>
+</body>
+
+</html>
