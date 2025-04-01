@@ -138,7 +138,10 @@ document.getElementById('cadastroRequisicao').addEventListener('submit', async f
     });
 
     if (response.ok) {
-      alert('Requisição cadastrada com sucesso!');
+      const confirmacao = confirm('Requisição cadastrada com sucesso! Deseja ir para a página de requisições?');
+      if (confirmacao) {
+        irParaGrindeview(); // Agora vai redirecionar somente se o usuário confirmar
+      }
     } else {
       const errorText = await response.text();
       console.error('Erro ao cadastrar requisição:', errorText);
@@ -171,12 +174,11 @@ function validarFormulario(event) {
     return false;
   }
 
-  irParaGrindeview();
   return true;
 }
 
 function irParaGrindeview() {
- window.location.href = "./Cadastro requisição grid.html";
+  window.location.href = "./Cadastro requisição grid.html";
 }
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -184,4 +186,3 @@ document.addEventListener('DOMContentLoaded', () => {
   carregarProjetos();
   setDataAtual();
 });
-

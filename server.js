@@ -11,7 +11,7 @@ import projetoRoute  from './Routes/projetoRoutes.js';
 import requisicoesRoute from './Routes/requisicoesRoutes.js';
 import fornecedoresRoute from './Routes/fornecedoresRoutes.js';
 import requisicoesgridRoute from './Routes/requisicoesgridRoutes.js';
-
+import produtoRoute from './Routes/produtoRoutes.js';
 
 // Corrige a obtenção do caminho absoluto do diretório
 const __filename = fileURLToPath(import.meta.url);
@@ -37,6 +37,7 @@ app.use('/api/projetos', projetoRoute);
 app.use('/api/requisicoes', requisicoesRoute);
 app.use('/api/fornecedores', fornecedoresRoute);
 app.use('/api/requisicoesgrid', requisicoesgridRoute);
+app.use('/api/produto', produtoRoute);
 
 // Inicia o servidor
 const PORT = 5500;
