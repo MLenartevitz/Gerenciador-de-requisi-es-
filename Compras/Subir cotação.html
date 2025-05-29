@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Envio de Cotação - Fornecedor</title>
+  <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">   
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="./Cotacao.css" />
+</head>
+<body>
+  <main class="fundo">
+    <section class="image">
+      <header>
+        <h1 class="Cadastro-Cliente">Upload de Cotações</h1>
+        <button class="voltar" onclick="window.history.back();">
+          <img src="../img/voltar0.png" alt="Voltar" />
+        </button>
+        <button class="image-44" onclick="window.location.href='../Perfil/Perfil.html';">
+          <img src="../img/image-40.png" alt="Perfil" />
+        </button>
+      </header>
+      <form id="formCotacao" enctype="multipart/form-data" class="form-upload">
+        <label for="nomeFornecedor">Nome do Fornecedor:</label>
+        <input type="text" id="nomeFornecedor" name="nomeFornecedor" required placeholder="EX: Andra" />
+      
+        <label for="localCotacao">Cotação para:</label>
+        <input type="text" id="localCotacao" name="localCotacao" required placeholder="EX: JCB/SP" />
+      
+        <div id="campoProjeto">
+          <label for="cod_proj">Projeto:</label>
+          <select id="cod_proj" name="cod_proj">
+            <option value="" disabled selected>Carregando projetos...</option>
+          </select>
+        </div>
+      
+        <div id="campoRequisicao" style="display: none;">
+          <label for="cod_requisicao">Requisição:</label>
+          <select id="cod_requisicao" name="cod_requisicao">
+            <option value="" disabled selected>Carregando requisições...</option>
+          </select>
+        </div>
+      
+        <label for="arquivoCotacao">Arquivo (PDF ou imagem):</label>
+        <input type="file" id="arquivoCotacao" name="arquivoCotacao" accept=".pdf,image/*" required />
+      
+        <button type="submit">Enviar Cotação</button>
+        <p id="mensagem"></p>
+      </form>
+      
+      <!-- Botões de seleção -->
+      <div>
+        <label><input type="radio" name="envioTipo" value="projeto" checked> Com Projeto</label>
+        <label><input type="radio" name="envioTipo" value="requisicao"> Com Requisição</label>
+      </div>
+      
+      <input type="hidden" name="cod_proj_from_requisicao" id="cod_proj_from_requisicao">
+
+    </section>
+  </main>
+  <script src="upload.js"></script>
+</body>
+</html>

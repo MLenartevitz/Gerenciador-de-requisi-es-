@@ -1,0 +1,59 @@
+.image {
+    background: var(--cor-fundo, #f4f4f4);
+    border-radius: 50px;
+    border: 1px solid #000000;
+    width: 1308px;
+    height: 808px;
+    position: relative;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.image-44 {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: absolute;
+    right: 60px; /* Ajuste a posição */
+    top: 38px;
+}
+
+.container {
+    width: 90%;
+    max-width: 800px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+#tabelaControle {
+    width: 75,5%;
+    border-collapse: collapse;
+    max-height: 300px;  /* Altura máxima da tabela */
+    overflow-y: auto;   /* Ativa o scroll vertical */
+    display: block;     /* Torna a tabela um bloco para o scroll funcionar */
+    position: relative;
+    left: 0px;
+    border: 2px solid #333
+  }
+  
+  th, td {
+    border: 2px solid #333;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  /* Cabeçalho fixo da tabela */
+  thead {
+    position: sticky;
+    top: 0; /* Fixa o cabeçalho no topo */
+    background-color: #57b4e1;
+    color: white;
+  }

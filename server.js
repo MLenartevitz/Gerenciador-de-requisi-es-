@@ -12,6 +12,11 @@ import requisicoesRoute from './Routes/requisicoesRoutes.js';
 import fornecedoresRoute from './Routes/fornecedoresRoutes.js';
 import requisicoesgridRoute from './Routes/requisicoesgridRoutes.js';
 import produtoRoute from './Routes/produtoRoutes.js';
+import cotacaoRoute from './Routes/cotacaoRoutes.js';
+import carroRoute from './Routes/carroRoutes.js';
+import controleRoutes from './Routes/controleRoutes.js';
+import epiRoutes from './Routes/epiRoutes.js';
+import qrcodeRoute from './Routes/qrcodeRoutes.js';
 
 // Corrige a obtenção do caminho absoluto do diretório
 const __filename = fileURLToPath(import.meta.url);
@@ -38,6 +43,11 @@ app.use('/api/requisicoes', requisicoesRoute);
 app.use('/api/fornecedores', fornecedoresRoute);
 app.use('/api/requisicoesgrid', requisicoesgridRoute);
 app.use('/api/produto', produtoRoute);
+app.use('/api/cotacoes', cotacaoRoute);
+app.use('/api/carro', carroRoute);
+app.use('/api/controle', controleRoutes);
+app.use('/api/epi', epiRoutes);
+app.use('/api/qrcode', qrcodeRoute);
 
 // Inicia o servidor
 const PORT = 5500;

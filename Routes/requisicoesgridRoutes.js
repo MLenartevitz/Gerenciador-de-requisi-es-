@@ -4,27 +4,39 @@ import { PrismaClient } from '@prisma/client';
 const router = express.Router();
 const prisma = new PrismaClient();
 
-// 📝 Criar um novo item de requisição
+// 📝 Criar um novo item de requisição com ordem sequencial
 router.post('/', async (req, res) => {
-  const { descricao, qtde, observacao, num_requisicao } = req.body;
+  const { descricao, qtde, observacao, num_requisicao, unidade_medida } = req.body;
 
   console.log('Dados recebidos:', req.body);
 
   const quantidadeInt = parseInt(qtde);
-  if (isNaN(quantidadeInt) || !descricao || !observacao || !num_requisicao) {
+  if (isNaN(quantidadeInt) || !descricao || !observacao || !num_requisicao || !unidade_medida) {
     return res.status(400).json({ error: 'Dados inválidos, por favor verifique os campos.' });
   }
 
   try {
-    console.log('Tentando criar um novo item de requisição no banco de dados');
+    console.log('Buscando quantidade atual de itens para a requisição', num_requisicao);
+
+    const quantidadeItens = await prisma.item_requisicao.count({
+      where: {
+        num_requisicao: parseInt(num_requisicao),
+      },
+    });
+
+    const ordem_item = quantidadeItens + 1;
+
+    console.log(`Será atribuída a ordem: ${ordem_item}`);
 
     const novoItem = await prisma.item_requisicao.create({
       data: {
         descricao,
         qtde: quantidadeInt,
         observacao,
+        ordem_item,
+        unidade_medida,
         requisicao: {
-          connect: { num_requisicao: num_requisicao },  
+          connect: { num_requisicao: parseInt(num_requisicao) },
         },
       },
     });
@@ -41,73 +53,82 @@ router.post('/', async (req, res) => {
   }
 });
 
-// 📋 Buscar o último número de requisição
-router.get('/ultimo-numero', async (req, res) => {
-  try {
-    console.log('Buscando o último número de requisição no banco de dados');
-
-    const ultimaRequisicao = await prisma.requisicao.findFirst({
-      orderBy: { num_requisicao: 'desc' }, 
-      select: { num_requisicao: true },
-    });
-
-    if (!ultimaRequisicao) {
-      return res.status(404).json({ error: 'Nenhuma requisição encontrada.' });
-    }
-
-    return res.json({ num_requisicao: ultimaRequisicao.num_requisicao });
-  } catch (error) {
-    console.error('Erro ao buscar o último número de requisição:', error.message);
-    return res.status(500).json({ error: `Erro ao buscar o último número de requisição: ${error.message}` });
-  }
-});
-
-// lista itens 
+// ✅ Atualizado: incluir num_item_req no retorno
 router.get('/', async (req, res) => {
   try {
     const itensRequisicao = await prisma.item_requisicao.findMany();
-    
+
     res.json({
       grid: itensRequisicao.map(item => ({
+        num_item_req: item.num_item_req, // IMPORTANTE
         num_requisicao: item.num_requisicao,
         observacao: item.observacao,
         qtde: item.qtde,
         descricao: item.descricao,
+        unidade_medida: item.unidade_medida,
       }))
     });
+
   } catch (error) {
     console.error('Erro ao buscar itens:', error);
     res.status(500).json({ error: 'Erro ao buscar itens' });
   }
 });
 
-// 🗑️ Remover o primeiro item inserido
-router.delete('/remover-primeiro', async (req, res) => {
-  try {
-    console.log('Buscando o primeiro item para remoção...');
+// 🗑️ Remover um item específico
+router.delete('/remover/:num_item_req', async (req, res) => {
+  const { num_item_req } = req.params;
 
-    // Buscar o item com o menor `num_item_req`
-    const primeiroItem = await prisma.item_requisicao.findFirst({
-      orderBy: { num_item_req: 'asc' }, // Ordena em ordem crescente (o primeiro item inserido vem primeiro)
+  try {
+    const itemParaRemover = await prisma.item_requisicao.findUnique({
+      where: {
+        num_item_req: parseInt(num_item_req),
+      },
     });
 
-    if (!primeiroItem) {
-      return res.status(404).json({ error: 'Nenhum item encontrado para excluir.' });
+    if (!itemParaRemover) {
+      return res.status(404).json({ error: 'Item não encontrado.' });
     }
 
-    console.log(`Removendo o item com num_item_req: ${primeiroItem.num_item_req}`);
-
-    // Deletar o primeiro item encontrado
     await prisma.item_requisicao.delete({
-      where: { num_item_req: primeiroItem.num_item_req },
+      where: { num_item_req: parseInt(num_item_req) },
     });
 
-    res.json({ message: 'Primeiro item removido com sucesso!' });
+    res.json({ message: 'Item removido com sucesso!' });
   } catch (error) {
     console.error('Erro ao excluir item:', error);
     res.status(500).json({ error: 'Erro ao excluir item do banco de dados.' });
   }
 });
 
+// 🔍 Buscar itens de uma requisição específica
+router.get('/:num_requisicao', async (req, res) => {
+  const { num_requisicao } = req.params;
+
+  try {
+    const itens = await prisma.item_requisicao.findMany({
+      where: {
+        num_requisicao: parseInt(num_requisicao),
+      },
+      select: {
+        descricao: true,
+        qtde: true,
+        observacao: true,
+        unidade_medida: true,
+      },
+    });
+
+    if (itens.length === 0) {
+      return res.status(404).json({ message: 'Nenhum item encontrado.' });
+    }
+
+    res.json({ itens });
+
+
+  } catch (error) {
+    console.error('Erro ao buscar itens:', error);
+    res.status(500).json({ error: 'Erro interno do servidor.' });
+  }
+});
 
 export default router;

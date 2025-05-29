@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Controle de veículos</title>  
+    <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">   
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./Carro2.css" />
+</head>
+
+<body>
+    <main class="fundo">
+        <section class="image">
+            <header>
+                <!-- Título separado da tabela -->
+                <div class="titulo-container">
+                    <h1 class="Cadastro-Cliente">Controle de veículos</h1>
+                </div>
+                
+                <button class="voltar" onclick="window.history.back();">
+                    <img src="../img/voltar0.png" alt="Voltar" />
+                </button>
+                <button class="image-44" onclick="window.location.href='../Perfil/Perfil.html';">
+                    <img src="../img/image-40.png" alt="Perfil" />
+                </button>
+            </header>
+
+            <!-- Tabela -->
+            <table id="tabelaControle">
+                <thead>
+                    <tr>
+                        <th>Carro</th>
+                        <th>Motorista</th>
+                        <th>Data Saída</th>
+                        <th>Hora Saída</th>
+                        <th>KM Saída</th>
+                        <th>Data Retorno</th>
+                        <th>Hora Retorno</th>
+                        <th>KM Retorno</th>
+                        <th>Motivo do Uso</th>
+                        <th>OBS</th>
+                    </tr>
+                </thead>
+                <tbody id="corpoTabela">
+                    <!-- As linhas vão ser inseridas aqui -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+    <script src="ControleCarro.js"></script>
+</body>
+
+
+</html>

@@ -29,6 +29,13 @@
           <li>
             <form id="cadastroRequisicao" onsubmit="return validarFormulario(event)">
 
+              
+              <div class="barra-empresa">
+                <select id="empresa" class="input-info" required>
+                  <option value="">Selecione a empresa</option>
+                </select>
+              </div>
+
               <div class="barra-codigo-projeto">
                 <select id="cod_proj" class="input-info3" required>
                   <option value="">Selecione o projeto</option>
@@ -38,12 +45,6 @@
               <legend>Data requisição:</legend>
               <div class="barra-data">
                 <input type="date" id="data" class="input-info" readonly>
-              </div>
-
-              <div class="barra-empresa">
-                <select id="empresa" class="input-info" required>
-                  <option value="">Selecione a empresa</option>
-                </select>
               </div>
 
               <div class="barra-revisor">

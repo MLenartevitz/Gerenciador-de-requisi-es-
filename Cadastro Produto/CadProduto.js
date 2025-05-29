@@ -8,6 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
       const produto = {
         nome_produto: document.getElementById('nome').value,
         qtde: document.getElementById('quantidade').value,
+        unidade_medida: document.getElementById('unidadeMedida').value,
         cod_omie: "23"
       };
   

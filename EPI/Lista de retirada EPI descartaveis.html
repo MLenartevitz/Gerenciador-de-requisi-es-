@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="../img/trabalho-em-equipe.png" />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="./Epi.css" />
+  <title>Lista de retirada de EPIs</title>
+</head>
+
+<body>
+  <main class="fundo">
+    <section class="image">
+      <header class="header-container">
+        <button class="voltar" onclick="window.history.back();">
+          <img src="../img/voltar0.png" alt="Voltar" />
+        </button>
+        <h1 class="Cadastro-Cliente">Retiradas de EPIs</h1>
+        <button class="image-44" onclick="window.location.href='../Perfil/Perfil.html';">
+          <img src="../img/image-40.png" alt="Perfil" />
+        </button>
+      </header>
+
+      <section class="tabela-container">
+        <button class="botao-imprimir" onclick="imprimirTabela()">
+          🖨️ Imprimir Lista
+        </button>
+
+        <table id="tabelaEpis" class="table-epi">
+          <thead>
+            <tr>
+              <th>Usuário</th>
+              <th>Data Retirada</th>
+              <th>Óculos</th>
+              <th>CA Óculos</th>
+              <th>Protetor</th>
+              <th>CA Protetor</th>
+              <th>Luvas</th>
+              <th>CA Luvas</th>
+              <th>Máscara</th>
+              <th>CA Máscara</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+    </section>
+  </main>
+
+  <script src="EpiListar.js"></script>
+</body>
+
+</html>

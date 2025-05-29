@@ -10,7 +10,8 @@ router.post('/', async (req, res) => {
     const {
       cod_omie,
       nome_produto,
-      qtde
+      qtde, 
+      unidade_medida,
     } = req.body;
 
     const novoProduto = await prisma.produtos.create({
@@ -18,6 +19,7 @@ router.post('/', async (req, res) => {
         cod_omie: parseInt(cod_omie),
         nome_produto: String(nome_produto),
         qtde: parseInt(qtde),
+        unidade_medida: String(unidade_medida),
       }
     });
 
@@ -44,7 +46,8 @@ router.put('/:cod_produto', async (req, res) => {
   const {
     cod_omie,
     nome_produto,
-    qtde
+    qtde,
+    unidade_medida
   } = req.body;
 
   try {
@@ -58,7 +61,7 @@ router.put('/:cod_produto', async (req, res) => {
 
     const produtoAtualizado = await prisma.produtos.update({
       where: { cod_produto: Number(cod_produto) },
-      data: { cod_omie,nome_produto,qtde }
+      data: { cod_omie,nome_produto,qtde,unidade_medida }
     });
 
     res.json({ message: "Produto atualizado com sucesso!", produto: produtoAtualizado });

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,7 +15,7 @@
   <main class="fundo">
     <section class="image">
       <header>
-        <h1 class="Cadastro-requisicoes">Cadastro de requisições</h1>
+        <h1 class="Cadastro-requisicoes">Cadastro de item de requisições</h1>
         <button class="voltar" aria-label="Voltar à página anterior" onclick="window.history.back();">
           <img src="../img/voltar0.png" alt="Ícone de Voltar">
         </button>
@@ -49,6 +50,11 @@
         <div class="modal-content">
           <h2>Adicionar Item</h2>
 
+          <label for="numRequisicao">Selecione a Requisição:</label>
+          <select id="numRequisicao" required>
+            <option value="" disabled selected>Selecione uma requisição</option>
+          </select>
+
           <label for="Descrição">Descrição:</label>
           <input type="text" id="Descrição" placeholder="Digite a descrição">
 
@@ -57,6 +63,23 @@
 
           <label for="Observação">Observação:</label>
           <input type="text" id="Observação" placeholder="Digite a observação">
+
+          <label for="Unidade de unidade Medida">Unidade de Medida:</label>
+          <div>
+            <select id="unidadeMedida" class="input-info4" required>
+              <option value="" disabled selected>Selecione a unidade</option>
+              <option value="un">Unidade</option>
+              <option value="kg">Quilograma (kg)</option>
+              <option value="g">Grama (g)</option>
+              <option value="l">Litro (L)</option>
+              <option value="ml">Mililitro (mL)</option>
+              <option value="m">Metro (m)</option>
+              <option value="cm">Centímetro (cm)</option>
+              <option value="mm">Milímetro (mm)</option>
+              <option value="m²">Metro quadrado (m²)</option>
+              <option value="m³">Metro cúbico (m³)</option>
+            </select>
+          </div>
 
           <button type="button" onclick="adicionarItem()">Salvar</button>
           <button type="button" onclick="fecharModal()">Cancelar</button>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Requisições</title>    
+  <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">   
+  <link rel="stylesheet" href="../style.css">
+  <link rel="stylesheet" href="./Req2.css">
+</head>
+
+<body>
+  <main class="fundo">
+    <section class="image">
+      <header>
+        <h1 class="Cadastro-requisicoes">Requisições</h1>
+        <button class="voltar" onclick="window.history.back();">
+          <img src="../img/voltar0.png" alt="Voltar" />
+        </button>
+        <button class="image-44" onclick="window.location.href='../Perfil/Perfil.html';">
+          <img src="../img/image-40.png" alt="Perfil" />
+        </button>
+      </header>
+
+      <div class="tabela-container">
+        <table id="requisicaoTable">
+          <thead>
+            <tr>
+              <th>Requisições</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populado via JS -->
+          </tbody>
+        </table>
+      </div>
+
+      <button onclick="abrirModalComSelecionadas()" class="btn-ver-detalhes">
+        <a class="detalhes">Ver Detalhes</a>
+      </button>
+    </section>
+  </main>
+
+  <!-- Modal -->
+  <div id="modalDetalhes" class="modal" style="display:none;">
+    <div class="modal-content">
+      <span class="fechar" onclick="fecharModal()">&times;</span>
+      <h2>Detalhes da Requisição</h2>
+      <div id="listaDetalhes"></div>
+      <button class="btn-baixar" onclick="baixarLista()">Baixar Lista</button>
+    </div>
+  </div>
+
+  <!-- Modal de Edição -->
+  <div id="modalEdicao" class="modal" style="display: none;">
+    <div class="modal-conteudo">
+      <h2>Editar Requisição</h2>
+      <form id="formEdicao">
+        <label for="editNumRequisicao">Número:</label>
+        <input type="text" id="editNumRequisicao" disabled>
+
+        <label for="editData">Data:</label>
+        <input type="date" id="editData" required>
+
+        <label for="editSolicitante">Revisor:</label>
+        <select id="editSolicitante" required></select>
+
+        <label for="editProjeto">Projeto:</label>
+        <select id="editProjeto" required></select>
+
+        <button type="submit">Salvar</button>
+        <button type="button" onclick="fecharModalEdicao()">Cancelar</button>
+      </form>
+    </div>
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+  <script src="req.js"></script>
+</body>
+
+</html>

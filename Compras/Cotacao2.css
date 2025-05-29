@@ -1,0 +1,242 @@
+/* Centralizar o container que envolve a tabela */
+.image {
+    background: var(--cor-fundo, #f4f4f4);
+    border-radius: 50px;
+    border: 1px solid #000000;
+    width: 808px;
+    height: 810px;
+    position: relative;
+    z-index: -1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.container {
+    width: 100%;  /* Garante que o container ocupe toda a largura */
+    max-width: 800px;  /* Limita a largura máxima */
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    margin: 0 auto; /* Centraliza o container */
+}
+
+/* Estilo para a tabela */
+/* Estilo para a tabela */
+#tabelaCotacoes {
+    max-width: 80%; /* Garante que a tabela ocupe toda a largura disponível */
+    border-collapse: collapse;
+    max-height: 250px;  /* Limita a altura da tabela */
+    overflow-y: auto;  /* Adiciona barra de rolagem vertical */
+    display: block;  /* Para que o overflow funcione */
+    border: 1px solid #333;  /* Borda mais fina (antes estava 2px) */
+    margin: 0 auto;  /* Centraliza a tabela dentro do container */
+    position: relative;
+    left: 0;  /* Remove o ajuste à esquerda */
+}
+
+/* Estilo para as células da tabela */
+th,
+td {
+    border: 1px solid #333; /* Borda mais fina (antes estava 2px) */
+    padding: 10px;
+    text-align: center;
+}
+
+
+/* Cabeçalho fixo da tabela */
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #57b4e1;
+    color: white;
+}
+
+/* Estilo para o botão de voltar */
+button {
+    padding: 5px 10px;
+}
+
+.voltar img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+/* Estilo do título */
+h1 {
+    flex-grow: 1;
+    text-align: center;
+    margin: 0;
+}
+
+.image-44 {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: absolute;
+    right: 60px;
+    top: 38px;
+}
+
+/* Estilos para o modal */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px 20px;
+    z-index: 1000;
+    overflow-y: auto;
+}
+
+.modal.show {
+    display: flex;
+  }
+
+.modal-content {
+   background-color: #fff;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    border-radius: 12px;
+    position: relative;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+    margin: auto;
+}
+
+.close-modal {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    font-size: 20px;
+    background: none;
+    border: none;
+    color: #666;
+    cursor: pointer;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    padding: 8px;
+    resize: none;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.modal-content button {
+    padding: 10px;
+    border: none;
+    background-color: #57b4e1;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+
+/* Estilos para o status da requisição */
+#statusRequisicao {
+    text-align: center;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+#statusRequisicao .sucesso {
+    color: green;
+    font-weight: bold;
+}
+
+#statusRequisicao .erro {
+    color: red;
+    font-weight: bold;
+}
+
+/* Estilos para o contêiner do filtro */
+.filtro-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 1rem;
+    border-radius: 15px;
+    color: #000;
+    align-items: center;
+    padding: 10px;
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border: 2px solid #000;
+}
+
+/* Estilos para o campo de texto */
+#filtroTexto {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    width: 200px;
+}
+
+/* Estilos para o campo select */
+#filtroSelect {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Estilos para o botão */
+#btnPesquisar {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#btnPesquisar:hover {
+    background-color: #0056b3;
+}
+
+/* Estilo para o botão */
+#btnPesquisar {
+    padding: 5px;  /* Ajuste o padding para deixar o botão do tamanho desejado */
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+/* Estilo para a imagem dentro do botão */
+#btnPesquisar img {
+    width: 30px; /* Ajuste o tamanho da imagem conforme necessário */
+    height: auto; /* Mantém a proporção da imagem */
+    display: block; /* Garante que a imagem seja exibida como um bloco, sem espaçamento abaixo */
+}
+
+.Cotação {
+    color: #000000;
+    text-align: left;
+    font-family: "RobotoSlab-Bold", sans-serif;
+    font-size: 35.8px;
+    font-weight: 700;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 1;
+}

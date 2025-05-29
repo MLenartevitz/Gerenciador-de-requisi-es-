@@ -1,3 +1,4 @@
+/* Estilo da área de fundo da imagem */
 .image {
     background: var(--cor-fundo, #f4f4f4);
     background-size: auto;
@@ -11,6 +12,7 @@
     z-index: -1;
 }
 
+/* Estilo básico do corpo */
 body {
     font-family: Arial, sans-serif;
     display: flex;
@@ -19,6 +21,7 @@ body {
     margin: 0;
 }
 
+/* Estilo do contêiner */
 .container {
     display: flex;
     flex-direction: column;
@@ -27,13 +30,73 @@ body {
 }
 
 .grid {
-    border: 2px solid #000;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(650px, 1fr));
-    gap: 10px;
-    padding: 20px;
-}
+    width: 100%;
+    border-collapse: collapse;
+    max-height: 400px;
+    overflow-y: auto;
+    display: block;
+    margin-top: 20px;
+    border: 1px solid #000000;
 
+  }
+  
+  .grid table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .grid th, .grid td {
+    border: 1px solid #333;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .grid th {
+    background-color: #71d0ff;
+    color: white;
+    position: sticky;
+    top: 0;
+  }
+  
+  .grid tbody tr:hover {
+    background-color: #e0e0e0;
+    cursor: pointer;
+  }  
+  .grid-row {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    background: #fff;
+    align-items: center;
+  }
+  
+  .grid-row.header {
+    background: #57b4e1;
+    color: white;
+    font-weight: bold;
+  }
+  
+  .grid-cell {
+    padding: 5px;
+    text-align: center;
+    border-right: 1px solid #ddd;
+  }
+  
+  .grid-row:last-child .grid-cell {
+    border-bottom: none;
+  }
+  
+  .grid-row:hover {
+    background-color: #eef;
+    cursor: pointer;
+  }
+  
+  .grid-row.selecionado {
+    background-color: #d0ebff !important;
+  }
+  
+/* Estilo do painel lateral com botões */
 .sidebar {
     display: flex;
     gap: 20px;
@@ -41,6 +104,7 @@ body {
     margin-top: 50px;
 }
 
+/* Estilo dos botões */
 button {
     padding: 10px;
     cursor: pointer;
@@ -51,30 +115,19 @@ button {
     display: none;
 }
 
+/* Estilo do modal */
 .modal {
     display: none;
-    /* Inicialmente escondido */
     position: fixed;
-    /* Fixa o modal na tela */
     top: 50%;
-    /* Posiciona o modal no meio verticalmente */
     left: 50%;
-    /* Posiciona o modal no meio horizontalmente */
     transform: translate(-50%, -50%);
-    /* Ajusta o modal para ficar exatamente no centro */
     background-color: rgba(0, 0, 0, 0.5);
-    /* Fundo semi-transparente */
-    z-index: 1000;
-    /* Garante que o modal fique sobre outros elementos */
-    width: 50%;
-    /* Define a largura do modal */
-    max-width: 600px;
-    /* Tamanho máximo para o modal */
+    z-index: 1100;
+    max-width: 740px;
     padding: 5px;
     border-radius: 5px;
-    /* Bordas arredondadas */
     box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.1);
-    /* Adiciona sombra sutil */
 }
 
 /* Estilos para o conteúdo do modal */
@@ -82,19 +135,18 @@ button {
     background-color: white;
     padding: 20px;
     border-radius: 12px;
-    /* Bordas arredondadas também para o conteúdo */
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-    /* Sombra sutil no conteúdo do modal */
 }
 
+/* Estilos das letras nos botões */
 .letra {
     color: var(--branco-generico, #ffffff);
     font-family: "RobotoSlab-Bold", sans-serif;
     font-size: 18px;
     font-weight: 700;
-
 }
 
+/* Estilo dos botões */
 .bot-es7 {
     background: var(--cor-principal, #71d0ff);
     border-radius: 16px;
@@ -109,8 +161,46 @@ button {
     border: 1px solid #000000;
 }
 
-.selecionado {
-    background-color: #f0f0f0;
-    border: 2px solid #007bff;
-  }
-  
+
+/* Estilo para o contêiner da tabela */
+.tabela-container {
+    display: flex;
+    justify-content: center;  /* Centraliza horizontalmente */
+    align-items: center;      /* Centraliza verticalmente */
+    height: 100vh;            /* Garante que o contêiner ocupe toda a altura da tela */
+}
+
+/* Estilo para a tabela */
+#requisicaoTable {
+    width: 100%;
+    max-width: 800px; /* Limita a largura máxima da tabela */
+    border-collapse: collapse;
+    max-height: 300px;
+    overflow-y: auto;
+    display: block; /* Torna a tabela um bloco para o scroll funcionar */
+    margin: 0 auto;  /* Centraliza a tabela horizontalmente */
+}
+
+th, td {
+    border: 2px solid #333;
+    padding: 10px;
+    text-align: center;
+}
+
+/* Cabeçalho fixo da tabela */
+thead {
+    position: sticky;
+    top: 0; /* Fixa o cabeçalho no topo */
+    background-color: #57b4e1;
+    color: white;
+}
+
+.input-info4 {
+    background: var(--branco-generico, #ffffff);
+    border-radius: 6px;
+    width: 30%;
+    height: 30%;
+    font-size: 14px;
+    color: #333;
+    border: 1px solid #000000;
+}

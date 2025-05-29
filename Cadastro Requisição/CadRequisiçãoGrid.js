@@ -1,46 +1,125 @@
-// Seleção dos elementos pela classe
 const grid = document.querySelector('.grid');
 const modal = document.querySelector('#modal');
 const modalOverlay = document.querySelector('.modal-overlay');
 const sidebarButtons = document.querySelectorAll('.sidebar button');
 
-// Função para abrir o modal
+let itemSelecionado = null;
+
 function abrirModal() {
-  console.log('Abrindo o modal...');
   modal.style.display = 'block';
   modalOverlay.style.display = 'block';
   desativarBotoes();
 }
 
-// Função para fechar o modal
 function fecharModal() {
-  console.log('Fechando o modal...');
   modal.style.display = 'none';
   modalOverlay.style.display = 'none';
   ativarBotoes();
+  limparCamposModal();
 }
 
-// Função para desativar os botões
 function desativarBotoes() {
-  sidebarButtons.forEach(button => {
-    button.disabled = true;
-  });
+  sidebarButtons.forEach(button => button.disabled = true);
 }
 
-// Função para ativar os botões
 function ativarBotoes() {
-  sidebarButtons.forEach(button => {
-    button.disabled = false;
-  });
+  sidebarButtons.forEach(button => button.disabled = false);
 }
 
-// Função para adicionar item manualmente e enviar ao backend
+function limparCamposModal() {
+  document.querySelector('#Descrição').value = '';
+  document.querySelector('#Quantidade').value = '';
+  document.querySelector('#Observação').value = '';
+  document.querySelector('#unidadeMedida').value = '';
+  document.querySelector('#numRequisicao').value = '';
+}
+
+async function carregarRequisicoes() {
+  try {
+    const response = await fetch('http://localhost:5500/api/requisicoes');
+    const requisicoes = await response.json();
+    const selectRequisicao = document.querySelector('#numRequisicao');
+    selectRequisicao.innerHTML = '<option value="" disabled selected>Selecione uma requisição</option>';
+    requisicoes.forEach(requisicao => {
+      const option = document.createElement('option');
+      option.value = requisicao.num_requisicao;
+      option.textContent = `Requisição ${requisicao.num_requisicao}`;
+      selectRequisicao.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Erro ao carregar requisições:', error);
+  }
+}
+
+async function buscarItens() {
+  try {
+    const response = await fetch('http://localhost:5500/api/requisicoesgrid', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
+      }
+    });
+
+    const data = await response.json();
+    grid.innerHTML = '';
+
+    if (!data.grid || data.grid.length === 0) {
+      grid.innerHTML = '<p>Nenhuma requisição encontrada.</p>';
+      return;
+    }
+
+    // Cabeçalho estilo Excel
+    const header = document.createElement('div');
+    header.classList.add('grid-row', 'header');
+    header.innerHTML = `
+      <div class="grid-cell"><strong>Requisição</strong></div>
+      <div class="grid-cell"><strong>Descrição</strong></div>
+      <div class="grid-cell"><strong>Quantidade</strong></div>
+      <div class="grid-cell"><strong>Observação</strong></div>
+      <div class="grid-cell"><strong>Unidade</strong></div>
+    `;
+    grid.appendChild(header);
+
+    data.grid.forEach(item => {
+      const row = document.createElement('div');
+      row.classList.add('grid-row');
+      row.dataset.id = item.num_item_req;
+
+      row.innerHTML = `
+        <div class="grid-cell">${item.num_requisicao || 'N/A'}</div>
+        <div class="grid-cell">${item.descricao || 'N/A'}</div>
+        <div class="grid-cell">${item.qtde || 'N/A'}</div>
+        <div class="grid-cell">${item.observacao || 'N/A'}</div>
+        <div class="grid-cell">${item.unidade_medida || 'N/A'}</div>
+      `;
+
+      row.addEventListener('click', () => selecionarItem(row));
+      grid.appendChild(row);
+    });
+
+  } catch (error) {
+    console.error('Erro ao buscar itens:', error);
+    alert('Erro ao buscar itens.');
+  }
+}
+
+function selecionarItem(row) {
+  if (itemSelecionado) {
+    itemSelecionado.classList.remove('selecionado');
+  }
+
+  itemSelecionado = row;
+  itemSelecionado.classList.add('selecionado');
+}
+
 async function adicionarItem() {
   const descricao = document.querySelector('#Descrição').value.trim();
   const quantidade = document.querySelector('#Quantidade').value.trim();
   const observacao = document.querySelector('#Observação').value.trim();
+  const unidade_medida = document.querySelector('#unidadeMedida').value.trim();
+  const numRequisicao = document.querySelector('#numRequisicao').value;
 
-  if (!descricao || !quantidade || !observacao) {
+  if (!descricao || !quantidade || !observacao || !unidade_medida || !numRequisicao) {
     return alert('Preencha todas as informações do item.');
   }
 
@@ -48,26 +127,20 @@ async function adicionarItem() {
     return alert('A quantidade precisa ser um número válido e maior que 0.');
   }
 
-  const numRequisicao = await buscarNumeroRequisicao();
-  if (!numRequisicao) {
-    return alert('Nenhuma requisição disponível. Crie uma antes de adicionar itens.');
-  }
-
   const requisicao = {
     descricao,
     qtde: parseInt(quantidade),
     observacao,
+    unidade_medida,
     num_requisicao: numRequisicao,
   };
-
-  console.log('Enviando item:', requisicao);
 
   try {
     const response = await fetch('http://localhost:5500/api/requisicoesgrid', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
+        'Authorization': `Bearer ${localStorage.getItem('token')}`,
       },
       body: JSON.stringify(requisicao),
     });
@@ -76,118 +149,45 @@ async function adicionarItem() {
       throw new Error('Erro ao adicionar item');
     }
 
-    console.log('Item adicionado com sucesso!');
-
-    // Recarrega a página automaticamente após adicionar o item
-    window.location.reload();
+    alert('Item adicionado com sucesso!');
+    fecharModal();
+    buscarItens(); // Atualiza sem recarregar a página
   } catch (error) {
     console.error('Erro ao adicionar o item:', error);
     alert('Erro ao adicionar item.');
   }
 }
 
-// Função para remover o primeiro item
 async function removerItem() {
+  if (!itemSelecionado) {
+    return alert('Selecione um item para remover.');
+  }
+
+  const itemId = itemSelecionado.dataset.id;
+  if (!itemId || isNaN(itemId)) {
+    return alert('ID do item inválido.');
+  }
+
   try {
-    const response = await fetch(`http://localhost:5500/api/requisicoesgrid/remover-primeiro`, {
+    const response = await fetch(`http://localhost:5500/api/requisicoesgrid/remover/${itemId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`,
-      }
+      },
     });
 
-    const responseData = await response.json();
-
     if (!response.ok) {
-      throw new Error(responseData.error || 'Erro ao remover item.');
+      throw new Error('Erro ao remover item');
     }
 
-    if (responseData.error === 'Nenhum item encontrado para excluir.') {
-      alert('Não há itens no banco de dados para remover.');
-      return;
-    }
-
-    console.log('Primeiro item removido com sucesso.');
-
-    // Recarrega a página automaticamente após remover o item
-    window.location.reload();
+    alert('Item removido com sucesso!');
+    itemSelecionado.remove();
+    itemSelecionado = null;
   } catch (error) {
     console.error('Erro ao remover o item:', error);
-    alert('Erro ao remover o item do banco de dados.');
+    alert('Erro ao remover o item.');
   }
 }
 
-// Função para buscar o `num_requisicao` da última requisição no banco
-async function buscarNumeroRequisicao() {
-  try {
-    const response = await fetch('http://localhost:5500/api/requisicoes', {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error('Erro ao buscar requisições');
-    }
-
-    const requisicoes = await response.json();
-    console.log('Requisições obtidas:', requisicoes);
-
-    // Retorna o `num_requisicao` da última requisição cadastrada
-    return requisicoes.length > 0 ? requisicoes[requisicoes.length - 1].num_requisicao : null;
-  } catch (error) {
-    console.error('Erro ao buscar requisições:', error);
-    return null;
-  }
-}
-
-// Função para buscar e exibir os itens já cadastrados no backend
-async function buscarItens() {
-  try {
-    const response = await fetch('http://localhost:5500/api/requisicoesgrid', {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${localStorage.getItem('token')}`
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error('Erro ao buscar requisições.');
-    }
-
-    const data = await response.json();
-    console.log('Itens carregados:', data);
-
-    // Limpa o grid antes de adicionar os itens
-    grid.innerHTML = '';
-
-    if (!data.grid || data.grid.length === 0) {
-      grid.innerHTML = '<p>Nenhuma requisição encontrada.</p>';
-      return;
-    }
-
-    // Adiciona os itens ao grid
-    data.grid.forEach(item => {
-      const itemDiv = document.createElement('div');
-      itemDiv.innerHTML = `
-        <strong>Requisição:</strong> ${item.num_requisicao || 'N/A'} <br>
-        <strong>Descrição:</strong> ${item.descricao || 'N/A'}  <br>
-        <strong>Quantidade:</strong> ${item.qtde || 'N/A'} <br>
-        <strong>Observação:</strong> ${item.observacao || 'N/A'} <br>
-      `;
-      itemDiv.style.border = '1px solid black';
-      itemDiv.style.padding = '10px';
-      itemDiv.style.textAlign = 'center';
-      itemDiv.style.background = '#f9f9f9';
-      itemDiv.style.borderRadius = '8px';
-      grid.appendChild(itemDiv);
-    });
-  } catch (error) {
-    console.error('Erro ao buscar itens:', error);
-    alert('Erro ao buscar itens.');
-  }
-}
-
-// Chamar a função automaticamente quando a página carregar
+window.addEventListener('load', carregarRequisicoes);
 window.addEventListener('load', buscarItens);

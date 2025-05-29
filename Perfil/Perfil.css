@@ -7,7 +7,7 @@
     border-color: #000000; 
     border-width: 1px; 
     width: 808px; 
-    height: 750px; 
+    height: 808px; 
     position: relative; 
     z-index: -1; 
 }
@@ -29,6 +29,7 @@
     margin: 15px 0 5px;
     font-size: 28px;
     left: 15%;
+     /*position: absolute;*/
 }
   
 .perfil-codigo {

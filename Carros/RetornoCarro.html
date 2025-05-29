@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Retorno de carro</title>
+  <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">   
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="./Carro.css" />
+</head>
+
+<body>
+  <main class="fundo">
+    <section class="image">
+      <header>
+        <h1 class="Cadastro-Cliente">Retorno de carro</h1>
+        <button class="voltar" onclick="window.history.back();">
+          <img src="../img/voltar0.png" alt="Voltar" />
+        </button>
+        <button class="image-44" onclick="window.location.href='../Perfil/Perfil.html';">
+          <img src="../img/image-40.png" alt="Perfil" />
+        </button>
+      </header>
+
+      <form id="formRetorno" enctype="multipart/form-data" class="form-upload">
+        <div class="espaço">
+          <label for="data" id="labelData">Data retorno:</label>
+          <input type="date" id="data" class="input-info4" readonly>
+        </div>
+
+        <div class="espaço">
+          <label for="hora" id="labelHora">Hora retorno:</label>
+          <input type="time" id="hora" class="input-info4" readonly>
+        </div>
+
+        <div class="espaço">
+          <label for="motorista">Motorista:</label>
+          <input id="motorista" class="input-info4" readonly>
+        </div>
+
+        <div class="espaço" id="campoCarro">
+          <label for="placa">Carro:</label>
+          <select id="placa" name="placa" class="input-info4" required>
+            <option value="" disabled selected>Carregando carros...</option>
+          </select>
+        </div>
+
+        <div class="espaço">
+          <label for="km">Km:</label>
+          <input type="number" id="km" class="input-info4" required placeholder="12000km">
+        </div>
+
+        <div class="espaço">
+          <label for="obs">Observação:</label>
+          <input type="text" id="obs" name="obs" class="input-info4" placeholder="Descreva o motivo de uso">
+        </div>
+
+        <label class="espaço" for="arquivoCotacao">Imagem painel km:</label>
+        <input type="file" id="arquivoCotacao" name="arquivoCotacao" accept=".pdf,image/*" required />
+
+        <button type="submit">Enviar informe de retorno</button>
+        <p id="mensagem"></p>
+      </form>
+    </section>
+  </main>
+
+  <script src="RetornoCarro.js"></script>
+</body>
+
+</html>

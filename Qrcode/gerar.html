@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Gerador de QRCode do Veículo</title>
+</head>
+<body>
+  <h1>Gerador de QRCode</h1>
+  <label>Digite a placa do veículo:</label>
+  <input type="text" id="placa" placeholder="Ex: ABC1234">
+  <button onclick="gerarQRCode()">Gerar QRCode</button>
+
+  <div id="resultado" style="margin-top:20px;"></div>
+
+  <script>
+    async function gerarQRCode() {
+      const placa = document.getElementById('placa').value.trim().toUpperCase();
+      if (!placa) {
+        alert('Informe a placa!');
+        return;
+      }
+
+      const res = await fetch(`http://localhost:5500/api/qrcode/${placa}`);
+      const data = await res.json();
+
+      const resultado = document.getElementById('resultado');
+      resultado.innerHTML = '';
+
+      if (data.qrCode) {
+        const img = document.createElement('img');
+        img.src = data.qrCode;
+        resultado.appendChild(img);
+
+        const p = document.createElement('p');
+        p.innerHTML = `Link de destino: <a href="${data.destino}" target="_blank">${data.destino}</a>`;
+        resultado.appendChild(p);
+      } else {
+        resultado.innerHTML = '<p style="color:red;">Carro não encontrado.</p>';
+      }
+    }
+  </script>
+</body>
+</html>

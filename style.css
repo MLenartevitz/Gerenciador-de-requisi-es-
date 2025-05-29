@@ -41,7 +41,7 @@ html, body {
 .barra-cliente, .barra-numero-pedido, .barra-numero-itempedido, .barra-responsavel, .barra-numero-item-requirido,
 .barra-requisicao, .barra-codigo-produto, .barra-tipo, .barra-numero-da-requisicao, .barra-codigo-projeto,
 .barra-codigo-usuario, .barra-revisor, .barra-end-fornecedor, .barra-email-fornecedor, .barra-tel-fornecedor,
-.barra-tipo-peca, .barra-marca {
+.barra-tipo-peca, .barra-marca, .barra-placa, .barra-modelo {
     width: 100%;
     max-width: 720px;
     height: 78px;
@@ -159,11 +159,27 @@ html, body {
     inset: 0;
 }
 
-.home2, .Cadastro-Produto, .Cadastro-Empresa, .Cadastro-Cliente, .Cadastro-Usuario, .Cadastro-Projeto, .Requisicao-de-item, .Cadastro-requisicoes, .Cadastro-Fornecedor {
+.home2, .Cadastro-Produto, .Cadastro-Empresa, .Cadastro-Cliente, .Cadastro-Usuario, .Cadastro-Projeto, .Requisicao-de-item, .Cadastro-Fornecedor {
     color: #000000;
     text-align: left;
     font-family: "RobotoSlab-Bold", sans-serif;
     font-size: 39.8px;
+    font-weight: 700;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 1;
+}
+
+.Cadastro-requisicoes{
+    color: #000000;
+    text-align: left;
+    font-family: "RobotoSlab-Bold", sans-serif;
+    font-size: 34px;
     font-weight: 700;
     position: absolute;
     left: 50%;

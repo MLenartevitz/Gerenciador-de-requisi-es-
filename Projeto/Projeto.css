@@ -22,22 +22,29 @@
     text-align: center;
 }
 
-table {
+/* Definindo a tabela com scroll */
+#ProjetosTable {
     width: 100%;
     border-collapse: collapse;
-    margin: 20px auto; /* Centraliza a tabela */
-}
-
-th, td {
+    max-height: 300px;  /* Altura máxima da tabela */
+    overflow-y: auto;   /* Ativa o scroll vertical */
+    display: block;     /* Torna a tabela um bloco para o scroll funcionar */
+  }
+  
+  th, td {
     border: 2px solid #333;
     padding: 10px;
     text-align: center;
-}
-
-th {
+  }
+  
+  /* Cabeçalho fixo da tabela */
+  thead {
+    position: sticky;
+    top: 0; /* Fixa o cabeçalho no topo */
     background-color: #57b4e1;
     color: white;
-}
+  }
+  
 
 button {
     padding: 5px 10px;

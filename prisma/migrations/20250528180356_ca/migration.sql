@@ -1,0 +1,5 @@
+-- AlterTable
+ALTER TABLE `epi_descartaveis` ADD COLUMN `caLuvas` VARCHAR(191) NOT NULL DEFAULT '-',
+    ADD COLUMN `caMascara` VARCHAR(191) NOT NULL DEFAULT '-',
+    ADD COLUMN `caOculos` VARCHAR(191) NOT NULL DEFAULT '-',
+    ADD COLUMN `caProtetor` VARCHAR(191) NOT NULL DEFAULT '-';

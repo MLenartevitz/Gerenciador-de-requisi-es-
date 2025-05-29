@@ -13,6 +13,7 @@
 </head>
 
 <body>
+  <script src="Home.js"></script>
   <main class="fundo">
     <section class="image">
       <header>
@@ -30,31 +31,28 @@
             </button>
           </li>
           <li>
-            <button type="button" class="bot-es3" onclick="window.location.href='../Projeto/Projeto.html';">
-              <span class="projeto">Projeto</span>
+            <button type="button" class="bot-es2" onclick="openModal2();">
+              <span class="requisicao"> Cadastro</span>
             </button>
           </li>
           <li>
-            <button type="button" class="bot-es4"
-              onclick="window.location.href='../Cadastro Produto/Cadastro produto.html';">
-              <span class="produto">Produto</span>
+            <button type="button" class="bot-es2" onclick="openModal3();">
+              <span class="requisicao"> Consulta</span>
             </button>
           </li>
           <li>
-            <button type="button" class="bot-es5"
-              onclick="window.location.href='../Cadastro Empresa/Cadastro empresa.html';">
-              <span class="cadastrar-empresa">Empresa</span>
+            <button type="button" class="bot-es2" onclick="openModal4();">
+              <span class="requisicao"> Compras</span>
             </button>
           </li>
           <li>
-            <button type="button" class="bot-es6" onclick="window.location.href='../Clientes/Clientes.html';">
-              <span class="cliente">Cliente</span>
+            <button type="button" class="bot-es2" onclick="openModal5();">
+              <span class="requisicao"> Carros</span>
             </button>
           </li>
           <li>
-            <button type="button" class="bot-es6"
-              onclick="window.location.href='../Cadastro Fornecedor/Cadastro fornecedor.html';">
-              <span class="fornecedor">Fornecedor</span>
+            <button type="button" class="bot-es2" onclick="openModal6();">
+              <span class="requisicao"> EPI</span>
             </button>
           </li>
         </ul>
@@ -67,29 +65,63 @@
     <div class="modal-content">
       <h2>Escolha uma opção</h2>
       <button onclick="novaRequisicao()">Nova requisição</button>
-      <button onclick="editarRequisicao()">Editar requisição</button>
+      <button onclick="consultaRequisicao()">Consulta requisicao</button>
+      <button onclick="itemRequisicao()">Item requisição</button>
       <button onclick="closeModal()">Fechar</button>
     </div>
   </div>
 
-  <script>
-    // Função para abrir a modal
-    function openModal() {
-      document.getElementById("myModal").style.display = "flex";
-    }
-    // Função para fechar a modal
-    function closeModal() {
-      document.getElementById("myModal").style.display = "none";
-    }
-    // Função para Nova Requisição
-    function novaRequisicao() {
-      window.location.href = '../Cadastro Requisição/Cadastro requisição.html';
-    }
-    // Função para Editar Requisição
-    function editarRequisicao() {
-      window.location.href = '../Editar Requisição/Editar requisição.html';
-    }
-  </script>
+  <div class="modal" id="myModal2">
+    <div class="modal-content">
+      <h2>Escolha uma opção</h2>
+      <button onclick="cadastrarCliente()">Cliente</button>
+      <button onclick="cadastrarProduto()">Produto</button>
+      <button onclick="cadastrarProjeto()">Projeto</button>
+      <button onclick="cadastrarFornecedor()">Fornecedor</button>
+      <button onclick="cadastrarEmpresa()">Empresa</button>
+      <button onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+
+  <div class="modal" id="myModal3">
+    <div class="modal-content">
+      <h2>Escolha uma opção</h2>
+      <button onclick="consultaCliente()">Cliente</button>
+      <button onclick="consultaProduto()">Produto</button>
+      <button onclick="consultaProjeto()">Projeto</button>
+      <button onclick="consultaFornecedor()">Fornecedor</button>
+      <button onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+
+  <div class="modal" id="myModal4">
+    <div class="modal-content">
+      <h2>Escolha uma opção</h2>
+      <button onclick="subirCotação()">Subir cotação</button>
+      <button onclick="pendCotação()">Cotações</button>
+      <button onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+
+  <div class="modal" id="myModal5">
+    <div class="modal-content">
+      <h2>Escolha uma opção</h2>
+      <button onclick="cadastrarCarro()">Cadastro de carros</button>
+      <button onclick="Saida()">Saída de veículos</button>
+      <button onclick="Retorno()">Retorno de veículos</button>
+      <button onclick="Listar()">Lista de veículos</button>
+      <button onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+
+  <div class="modal" id="myModal6">
+    <div class="modal-content">
+      <h2>Escolha uma opção</h2>
+      <button onclick="retiradaEPIDESC()">Retirada de EPI descartáveis</button>
+      <button onclick="listaEPIDESC()">Controle de EPI descartáveis</button>
+      <button onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
 </body>
 
 </html>

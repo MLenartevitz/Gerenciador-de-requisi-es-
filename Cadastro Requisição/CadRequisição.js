@@ -6,6 +6,11 @@ async function carregarOpcoes() {
     const empresas = await empresasResponse.json();
     const empresaSelect = document.getElementById('empresa');
 
+    if (!empresas || empresas.length === 0) {
+      console.error('Nenhuma empresa encontrada');
+      return;
+    }
+
     empresas.forEach(empresa => {
       const option = document.createElement('option');
       option.value = empresa.cod_empresa;  // Ajuste conforme seu banco de dados
@@ -13,6 +18,20 @@ async function carregarOpcoes() {
       empresaSelect.appendChild(option);
     });
 
+    // Chama a função para carregar os projetos quando uma empresa for selecionada
+    empresaSelect.addEventListener('change', carregarProjetosPorEmpresa);
+
+    // Carregar os usuários para o revisor
+    await carregarUsuarios();
+  } catch (error) {
+    console.error('Erro ao carregar empresas:', error);
+    alert('Erro ao carregar empresas.');
+  }
+}
+
+// Carregar usuários para o revisor
+async function carregarUsuarios() {
+  try {
     const revisorSelect = document.getElementById('revisor');
     const token = localStorage.getItem('token');
     if (!token) {
@@ -25,10 +44,15 @@ async function carregarOpcoes() {
       headers: { 'Authorization': `Bearer ${token}` }
     });
 
+    if (!response.ok) {
+      alert('Erro ao carregar usuários. Token inválido ou expirado.');
+      window.location.href = '../Login/Login.html'; // Redireciona para a página de login
+      return;
+    }
+
     const usuarios = await response.json();
 
     if (Array.isArray(usuarios)) {
-      // Carrega todos os usuários
       usuarios.forEach(usuario => {
         const option = document.createElement('option');
         option.value = usuario.cod_user;
@@ -46,29 +70,57 @@ async function carregarOpcoes() {
   }
 }
 
-// Carrega os projetos disponíveis
-async function carregarProjetos() {
+// Carrega os projetos relacionados a uma empresa específica
+async function carregarProjetosPorEmpresa() {
   try {
+    const empresaSelect = document.getElementById('empresa');
     const projetoSelect = document.getElementById('cod_proj');
     const token = localStorage.getItem('token');
+
     if (!token) {
       alert('Usuário não autenticado. Faça login novamente.');
       window.location.href = '../Login/Login.html';
       return;
     }
 
-    const response = await fetch('http://localhost:5500/api/projetos', {
+    const codEmpresa = empresaSelect.value;
+
+    // Se não houver uma empresa selecionada, limpa os projetos
+    if (!codEmpresa) {
+      projetoSelect.innerHTML = '<option value="">Selecione um projeto</option>';
+      return;
+    }
+
+    // Fazer requisição para buscar projetos da empresa selecionada
+    const response = await fetch(`http://localhost:5500/api/projetos?empresa=${codEmpresa}`, {
       headers: { 'Authorization': `Bearer ${token}` }
     });
 
+    if (!response.ok) {
+      alert('Erro ao carregar projetos. Token inválido ou expirado.');
+      window.location.href = '../Login/Login.html'; // Redireciona para a página de login
+      return;
+    }
+
     const projetos = await response.json();
 
-    projetos.forEach(projeto => {
+    // Limpa os projetos antigos antes de carregar novos
+    projetoSelect.innerHTML = '<option value="">Selecione um projeto</option>';
+
+    // Verifique se os projetos foram encontrados para a empresa
+    if (projetos && projetos.length > 0) {
+      projetos.forEach(projeto => {
+        const option = document.createElement('option');
+        option.value = projeto.cod_proj;
+        option.textContent = `${projeto.cod_proj} - ${projeto.titulo}`;
+        projetoSelect.appendChild(option);
+      });
+    } else {
       const option = document.createElement('option');
-      option.value = projeto.cod_proj;
-      option.textContent = `${projeto.cod_proj} - ${projeto.titulo}`;
+      option.value = '';
+      option.textContent = 'Nenhum projeto encontrado';
       projetoSelect.appendChild(option);
-    });
+    }
   } catch (error) {
     console.error('Erro ao carregar projetos:', error);
     alert('Erro ao carregar projetos.');
@@ -91,8 +143,14 @@ document.getElementById('cadastroRequisicao').addEventListener('submit', async f
     });
 
     if (!responseUsuario.ok) {
-      alert('Erro ao obter informações do usuário logado.');
-      return;
+      if (responseUsuario.status === 401) {
+        alert('Sessão expirada. Faça login novamente.');
+        window.location.href = '../Login/Login.html';  // Redireciona para a tela de login
+        return;
+      } else {
+        alert('Erro ao obter informações do usuário logado.');
+        return;
+      }
     }
 
     const usuarioLogado = await responseUsuario.json();
@@ -113,17 +171,25 @@ document.getElementById('cadastroRequisicao').addEventListener('submit', async f
       return;
     }
 
+    const codEmpresa = document.getElementById('empresa').value;  // Coleta o código da empresa selecionada
+    if (!codEmpresa) {
+      alert('Por favor, selecione uma empresa!');
+      return;
+    }
+
     const dataRequisicao = document.getElementById('data').value;
     if (!dataRequisicao) {
       alert('Data inválida!');
       return;
     }
 
+    // Criar o objeto da requisição com todos os dados
     const requisicao = {
       cod_proj: codProj, // Garantir que seja um número
       data_requisicao: dataRequisicao,
       cod_user: usuarioLogado.cod_user, // Envia o usuário logado automaticamente
-      rev_req: revReq
+      rev_req: revReq,
+      cod_empresa: codEmpresa  // Incluindo o código da empresa na requisição
     };
 
     console.log('Requisição a ser enviada:', requisicao); // Log para ver os dados enviados
@@ -153,6 +219,71 @@ document.getElementById('cadastroRequisicao').addEventListener('submit', async f
   }
 });
 
+
+// Função para carregar projetos por empresa
+async function carregarProjetosPorEmpresa() {
+  const empresaSelect = document.getElementById('empresa');
+  const projetoSelect = document.getElementById('cod_proj');
+  const codEmpresa = empresaSelect.value; // Obtém o código da empresa selecionada
+
+  console.log("Código da empresa selecionada:", codEmpresa);  // Verifique o código da empresa selecionada
+
+  if (!codEmpresa) {
+    projetoSelect.innerHTML = '<option value="">Selecione um projeto</option>';
+    return;
+  }
+
+  const token = localStorage.getItem('token');
+  if (!token) {
+    alert('Usuário não autenticado. Faça login novamente.');
+    window.location.href = '../Login/Login.html';  // Redireciona para a página de login
+    return;
+  }
+
+  try {
+    // Log para verificar se a empresa está sendo passada corretamente
+    console.log("Buscando projetos para a empresa com cod_empresa:", codEmpresa);
+
+    const response = await fetch(`http://localhost:5500/api/projetos/empresa/${codEmpresa}`, {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`  // Envia o token no cabeçalho
+      }
+    });
+
+    if (!response.ok) {
+      if (response.status === 401) {
+        alert('Sessão expirada ou token inválido. Faça login novamente.');
+        window.location.href = '../Login/Login.html'; // Redireciona para a página de login
+      } else if (response.status === 404) {
+        alert('Nenhum projeto encontrado para esta empresa.');
+      } else {
+        alert('Erro ao carregar projetos.');
+      }
+      return;
+    }
+
+    const projetos = await response.json();
+
+    // Limpa os projetos antigos antes de carregar novos
+    projetoSelect.innerHTML = '<option value="">Selecione um projeto</option>';
+
+    projetos.forEach(projeto => {
+      const option = document.createElement('option');
+      option.value = projeto.cod_proj;
+      option.textContent = `${projeto.cod_proj} - ${projeto.titulo}`;
+      projetoSelect.appendChild(option);
+    });
+  } catch (error) {
+    console.error('Erro ao carregar projetos:', error);
+    alert('Erro ao carregar projetos.');
+  }
+}
+
+function irParaGrindeview() {
+  window.location.href = './Cadastro requisição grid.html';
+}
+
 // Define a data atual no campo
 function setDataAtual() {
   const dataCampo = document.getElementById('data');
@@ -162,27 +293,7 @@ function setDataAtual() {
   }
 }
 
-function validarFormulario(event) {
-  const cod_proj = document.getElementById('cod_proj').value;
-  const data = document.getElementById('data').value;
-  const empresa = document.getElementById('empresa').value;
-  const revisor = document.getElementById('revisor').value;
-
-  if (!cod_proj || !data || !empresa || !revisor) {
-    alert('Por favor, preencha todos os campos!');
-    event.preventDefault();
-    return false;
-  }
-
-  return true;
-}
-
-function irParaGrindeview() {
-  window.location.href = "./Cadastro requisição grid.html";
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   carregarOpcoes();
-  carregarProjetos();
   setDataAtual();
 });

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Aprovação de Cotações</title>
+    <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">   
+    <link rel="stylesheet" href="../style.css" />
+    <link rel="stylesheet" href="./Cotacao2.css" />
+</head>
+
+<body>
+    <main class="fundo">
+        <section class="image">
+            <header>
+                <h1 class="Cotação">Cotações</h1>
+                <button class="voltar" onclick="window.history.back();">
+                    <img src="../img/voltar0.png" alt="Voltar" />
+                </button>
+                <button class="image-44" onclick="window.location.href='../Perfil/Perfil.html';">
+                    <img src="../img/image-40.png" alt="Perfil" />
+                </button>
+            </header>
+            <div class="filtro-container">
+                <input type="text" id="filtroTexto" placeholder="Pesquisar" />
+                <select id="filtroSelect">
+                    <option value="">Todos os projetos/requisições</option>
+                </select>
+                <button id="btnPesquisar"> <img src="../img/pesquisar.png" alt="botão pesquisar"></button>
+            </div>
+            <table id="tabelaCotacoes">
+                <thead>
+                    <tr>
+                        <th>Arquivo</th>
+                        <th>Projeto</th>
+                        <th>Requisição</th>
+                        <th>Status</th>
+                        <th>Motivo Recusa</th>
+                    </tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+    </main>
+
+    <!-- Modal de Recusa -->
+    <div id="modalRecusa" class="modal">
+        <div class="modal-content">
+            <textarea id="motivoRecusa" placeholder="Informe o motivo da recusa..."></textarea>
+            <button id="confirmarRecusa">Confirmar</button>
+            <button id="cancelarRecusa">Cancelar</button>
+        </div>
+    </div>
+
+    <!-- Status -->
+    <div id="statusRequisicao"></div>
+
+    <script src="listar.js"></script>
+</body>
+
+</html>

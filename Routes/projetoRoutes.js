@@ -117,4 +117,46 @@ router.get('/cod_proj', async (req, res) => {
     res.status(500).json({ error: 'Erro ao buscar projetos' });
   }
 });
+
+// Rota para listar os projetos de uma empresa específica (sem token)
+router.get('/empresa/:cod_empresa', async (req, res) => {
+  const { cod_empresa } = req.params;
+
+  try {
+    // Busca projetos que pertencem à empresa especificada
+    const projetos = await prisma.projeto.findMany({
+      where: {
+        cod_empresa: Number(cod_empresa),
+      },
+    });
+
+    // Se não encontrar projetos, retorna um erro
+    if (projetos.length === 0) {
+      return res.status(404).json({ error: 'Nenhum projeto encontrado para esta empresa.' });
+    }
+
+    // Se encontrar, retorna os projetos encontrados
+    res.json(projetos);
+  } catch (error) {
+    console.error('Erro ao buscar projetos:', error);
+    res.status(500).json({ error: 'Erro ao buscar projetos' });
+  }
+});
+
+router.get('/listar', async (req, res) => {
+  try {
+      const projetos = await prisma.projeto.findMany({
+          select: {
+              cod_proj: true,
+              titulo: true,
+          }
+      });
+
+      res.status(200).json(projetos);
+  } catch (error) {
+      console.error('Erro ao listar projetos:', error);
+      res.status(500).json({ message: 'Erro ao listar projetos.' });
+  }
+});
+
 export default router;
