@@ -7,9 +7,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">
   <link rel="stylesheet" href="../style.css">
-  <link rel="stylesheet" href="./Home.css">
+  <link rel="stylesheet" href="../CSS_Responsivos/Home.css">
   <title>Home</title>
-
 </head>
 
 <body>
@@ -18,7 +17,7 @@
     <section class="image">
       <header>
         <h1 class="home2">Home</h1>
-        <button class="image-4" onclick="window.location.href='../Perfil/Perfil.html';">
+        <button class="image-4" onclick="window.location.href='../Perfil/Perfil.html';" aria-label="Ir para Perfil">
           <img src="../img/image-40.png" alt="Logo ou Ícone">
         </button>
       </header>
@@ -26,32 +25,32 @@
       <nav class="navegacao">
         <ul>
           <li>
-            <button type="button" class="bot-es2" onclick="openModal();">
+            <button type="button" class="bot-es2" onclick="openModal();" aria-label="Abrir Modal de Requisição">
               <span class="requisicao"> Requisição</span>
             </button>
           </li>
           <li>
-            <button type="button" class="bot-es2" onclick="openModal2();">
+            <button type="button" class="bot-es2" onclick="openModal2();" aria-label="Abrir Modal de Cadastro">
               <span class="requisicao"> Cadastro</span>
             </button>
           </li>
           <li>
-            <button type="button" class="bot-es2" onclick="openModal3();">
+            <button type="button" class="bot-es2" onclick="openModal3();" aria-label="Abrir Modal de Consulta">
               <span class="requisicao"> Consulta</span>
             </button>
           </li>
           <li>
-            <button type="button" class="bot-es2" onclick="openModal4();">
+            <button type="button" class="bot-es2" onclick="openModal4();" aria-label="Abrir Modal de Compras">
               <span class="requisicao"> Compras</span>
             </button>
           </li>
           <li>
-            <button type="button" class="bot-es2" onclick="openModal5();">
+            <button type="button" class="bot-es2" onclick="openModal5();" aria-label="Abrir Modal de Carros">
               <span class="requisicao"> Carros</span>
             </button>
           </li>
           <li>
-            <button type="button" class="bot-es2" onclick="openModal6();">
+            <button type="button" class="bot-es2" onclick="openModal6();" aria-label="Abrir Modal de EPI">
               <span class="requisicao"> EPI</span>
             </button>
           </li>
@@ -65,12 +64,13 @@
     <div class="modal-content">
       <h2>Escolha uma opção</h2>
       <button onclick="novaRequisicao()">Nova requisição</button>
-      <button onclick="consultaRequisicao()">Consulta requisicao</button>
+      <button onclick="consultaRequisicao()">Consulta requisição</button>
       <button onclick="itemRequisicao()">Item requisição</button>
       <button onclick="closeModal()">Fechar</button>
     </div>
   </div>
 
+  <!-- Modal de Cadastro -->
   <div class="modal" id="myModal2">
     <div class="modal-content">
       <h2>Escolha uma opção</h2>
@@ -83,6 +83,7 @@
     </div>
   </div>
 
+  <!-- Modal de Consulta -->
   <div class="modal" id="myModal3">
     <div class="modal-content">
       <h2>Escolha uma opção</h2>
@@ -94,6 +95,7 @@
     </div>
   </div>
 
+  <!-- Modal de Compras -->
   <div class="modal" id="myModal4">
     <div class="modal-content">
       <h2>Escolha uma opção</h2>
@@ -103,6 +105,7 @@
     </div>
   </div>
 
+  <!-- Modal de Carros -->
   <div class="modal" id="myModal5">
     <div class="modal-content">
       <h2>Escolha uma opção</h2>
@@ -114,6 +117,7 @@
     </div>
   </div>
 
+  <!-- Modal de EPI -->
   <div class="modal" id="myModal6">
     <div class="modal-content">
       <h2>Escolha uma opção</h2>
@@ -122,6 +126,7 @@
       <button onclick="closeModal()">Fechar</button>
     </div>
   </div>
+
 </body>
 
 </html>

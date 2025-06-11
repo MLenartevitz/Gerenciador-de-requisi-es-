@@ -13,7 +13,6 @@ const prisma = new PrismaClient();
 const SECRET_KEY = process.env.JWT_SECRET || "seuSegredoSuperSeguro"; // Melhor usar variável de ambiente
 
 // Rota de cadastro de usuário
-// Rota de cadastro de usuário
 router.post('/register', async (req, res) => {
   const { nome_user, funcao, senha, data_inicio } = req.body;
 

@@ -1,0 +1,262 @@
+/* Layout Responsivo Geral */
+.image {
+    background: var(--cor-fundo, #f4f4f4);
+    border-radius: 30px;
+    border: 1px solid #000000;
+    width: 95%;
+    max-width: 1200px;
+    min-height: 80vh;
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+header {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+h1.Cadastro-Cliente {
+    font-size: 24px;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estilo para a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow-x: auto;
+    display: block;
+}
+
+th,
+td {
+    border: 2px solid #333;
+    padding: 8px;
+    text-align: center;
+    font-size: 14px;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #57b4e1;
+    color: white;
+}
+
+th {
+    font-size: 16px;
+}
+
+/* Responsividade para telas médias (tablets) */
+@media (max-width: 768px) {
+    table {
+        font-size: 12px;
+    }
+
+    th,
+    td {
+        padding: 6px;
+        font-size: 12px;
+    }
+
+    table {
+        overflow-x: auto;
+        display: block;
+    }
+
+    /* Ajustes de visualização para melhorar a legibilidade em telas pequenas */
+    th,
+    td {
+        white-space: nowrap;
+    }
+}
+
+/* Responsividade para telas pequenas (celulares) */
+@media (max-width: 480px) {
+    table {
+        font-size: 10px;
+    }
+
+    th,
+    td {
+        padding: 4px;
+        font-size: 10px;
+    }
+
+    /* Ajustes de visualização para melhorar a legibilidade em telas muito pequenas */
+    th,
+    td {
+        white-space: nowrap;
+    }
+
+    /* Permite rolar horizontalmente a tabela */
+    table {
+        overflow-x: scroll;
+        display: block;
+    }
+}
+
+/* Estilo para o formulário */
+.form-upload {
+    width: 100%;
+    max-width: 600px;
+    /* Limita a largura do formulário */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.espaço {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.input-info4 {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+input[type="file"] {
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* Botões */
+button {
+    padding: 12px 24px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.btn2 {
+    padding: 12px 24px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #71d0ff;
+    color: white;
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+/* Loader */
+#loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #71d0ff;
+    font-size: 18px;
+    margin-top: 20px;
+}
+
+.voltar,
+.voltar img {
+    width: 35px;
+    height: 35px;
+    left: 300px;
+    top: 90px;
+}
+
+.image-4,
+.image-4 img {
+    width: 35px;
+    height: 35px;
+    left: 900px;
+    top: 90px;
+}
+
+/* Responsividade para telas médias e pequenas */
+@media (max-width: 768px) {
+    .image {
+        padding: 15px;
+    }
+
+    .form-upload {
+        width: 90%;
+        padding: 10px;
+    }
+
+    .input-info4 {
+        font-size: 14px;
+        padding: 10px;
+    }
+
+    button {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+
+    .voltar {
+        width: 35px;
+        height: 35px;
+        left: 40px;
+        top: 45px;
+    }
+
+    .image-4 {
+        width: 35px;
+        height: 35px;
+        right: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    .image {
+        padding: 10px;
+    }
+
+    .form-upload {
+        width: 95%;
+        padding: 10px;
+    }
+
+    .input-info4 {
+        font-size: 12px;
+        padding: 8px;
+    }
+
+    button {
+        font-size: 12px;
+        padding: 8px 16px;
+    }
+
+    .voltar {
+        width: 35px;
+        height: 35px;
+        left: 40px;
+        top: 45px;
+    }
+
+    .image-4 {
+        width: 30px;
+        height: 30px;
+        left: 250px;
+        top: -15px;
+        ;
+    }
+
+    h1.Cadastro-Cliente {
+        font-size: 20px;
+    }
+}

@@ -54,13 +54,18 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Quantidades (se não preenchido, considera 0)
-        const quantidadeOculos = parseInt(document.getElementById('quantidadeOculos').value) || 0;
-        const quantidadeProtetor = parseInt(document.getElementById('quantidadeProtetor').value) || 0;
-        const quantidadeLuvas = parseInt(document.getElementById('quantidadeLuvas').value) || 0;
-        const quantidadeMascara = parseInt(document.getElementById('quantidadeMascara').value) || 0;
+        const quantidadeOculos = Math.max(0, parseInt(document.getElementById('quantidadeOculos').value) || 0);
+        const quantidadeProtetor = Math.max(0, parseInt(document.getElementById('quantidadeProtetor').value) || 0);
+        const quantidadeLuvas = Math.max(0, parseInt(document.getElementById('quantidadeLuvas').value) || 0);
+        const quantidadeMascara = Math.max(0, parseInt(document.getElementById('quantidadeMascara').value) || 0);
 
-        // Payload JSON
+        const total = quantidadeOculos + quantidadeProtetor + quantidadeLuvas + quantidadeMascara;
+
+        if (total === 0) {
+            alert('Informe pelo menos a quantidade de um EPI.');
+            return;
+        }
+
         const payload = {
             cod_user,
             data,
@@ -73,14 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
             caLuvas: document.getElementById('caLuvas').value.trim() || "-",
             caMascara: document.getElementById('caMascara').value.trim() || "-",
         };
-
-        // Validação: impedir que envie tudo zerado
-        const total = quantidadeOculos + quantidadeProtetor + quantidadeLuvas + quantidadeMascara;
-
-        if (total === 0) {
-            alert('Informe pelo menos a quantidade de um EPI.');
-            return;
-        }
 
         try {
             const response = await fetch('http://localhost:5500/api/epi/cadastrar', {

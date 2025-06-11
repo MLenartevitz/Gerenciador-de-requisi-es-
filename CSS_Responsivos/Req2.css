@@ -1,0 +1,274 @@
+/* Área de fundo genérica */
+.image {
+    background: var(--cor-fundo, #f4f4f4);
+    border-radius: 30px;
+    border: 1px solid #000000;
+    width: 95%;
+    max-width: 1200px;
+    min-height: 95vh;
+    padding: 80px 20px 20px;
+    /* Aumentado padding-top para espaçamento superior */
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Container centralizado */
+.container {
+    width: 100%;
+    max-width: 1000px;
+    background-color: white;
+    padding: 30px;
+    /* Aumentado o padding interno */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Tabelas centralizadas */
+table,
+#ProjetosTable,
+#clientesTable,
+#requisicaoTable,
+#tabelaControle {
+    width: 100%;
+    max-width: 960px;
+    margin: 20px auto;
+    /* Garantindo espaçamento nas laterais */
+    border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
+}
+
+th,
+td {
+    border: 2px solid #333;
+    padding: 10px;
+    /* Aumentado padding para melhor legibilidade */
+    text-align: center;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #57b4e1;
+    color: white;
+}
+
+/* Botões padrão */
+button {
+    padding: 8px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    opacity: 0.8;
+}
+
+.btn-editar {
+    background-color: #007bff;
+    color: white;
+}
+
+.btn-excluir {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-ver-detalhes {
+    background-color: #71d0ff;
+    color: #ffffff;
+    border: 1px solid #000;
+}
+
+.btn-ver-detalhes:hover {
+    background-color: #57b4e1;
+}
+
+/* Cabeçalho flexível */
+.header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 20px;
+    /* Garantir que o conteúdo não grude nos botões */
+}
+
+.voltar img {
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+}
+
+.image-44 {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    position: absolute;
+    left: 1250px;
+    top: 100px;
+}
+
+/* Modal responsivo */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    max-width: 95%;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.fechar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+}
+
+.fechar:hover {
+    color: #000;
+}
+
+/* Estilo para listas dentro de modal */
+#listaDetalhes {
+    list-style: none;
+    padding: 0;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+#listaDetalhes li {
+    margin-bottom: 10px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Footer do modal */
+.modal-footer {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn-baixar {
+    background-color: #57b4e1;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.btn-baixar:hover {
+    background-color: #0056b3;
+}
+
+.voltar {
+    left: 450px;
+    top: 100px;
+}
+
+
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-44 {
+        right: 10px;
+        top: 10px;
+    }
+
+    th,
+    td {
+        padding: 6px;
+        font-size: 14px;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+
+    .btn-ver-detalhes {
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .voltar {
+        left: 45px;
+        top: 75px;
+    }
+
+    .image-44 {
+        width: 45px;
+        height: 45px;
+        left: 275px;
+        top: 75px;
+    }
+}
+
+/* Responsividade para celulares */
+@media (max-width: 480px) {
+
+    th,
+    td {
+        padding: 4px;
+        font-size: 12px;
+    }
+
+    button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .btn-ver-detalhes {
+        font-size: 14px;
+    }
+
+    .voltar {
+        left: 45px;
+        top: 75px;
+    }
+
+    .image-44 {
+        width: 45px;
+        height: 45px;
+        left: 275px;
+        top: 75px;
+    }
+}

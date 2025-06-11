@@ -1,0 +1,114 @@
+/* Área da imagem responsiva */
+.image {
+    background: var(--cor-fundo, #f4f4f4);
+    border-radius: 30px;
+    border: 1px solid #000000;
+    width: 95%;
+    max-width: 600px;
+    min-height: 90vh;
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+/* Informações do perfil */
+.perfil-info {
+    margin-top: 20px;
+    position: relative;
+    text-align: center;
+}
+
+/* Foto do perfil */
+.perfil-foto img {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    border: 3px solid #000000;
+    object-fit: cover;
+}
+
+/* Nome */
+.perfil-nome {
+    margin: 15px 0 5px;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+/* Código */
+.perfil-codigo {
+    color: #71d0ff;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+/* Navegação ou lista */
+ul,
+li {
+    margin: 29px;
+    padding: 0;
+    list-style: none;
+}
+
+/* Botão de sair */
+.sair {
+    color: var(--branco-generico, #ffffff);
+    font-family: "RobotoSlab-Bold", sans-serif;
+    font-size: 26px;
+    font-weight: 700;
+    margin: 15px;
+    cursor: pointer;
+    position: relative;
+}
+
+.voltar {
+    left: 650px;
+    top: 100px;
+}
+
+/* ------------------------ */
+/* Responsividade */
+/* ------------------------ */
+@media (max-width: 768px) {
+    .perfil-foto img {
+        width: 150px;
+        height: 150px;
+    }
+
+    .perfil-nome {
+        font-size: 24px;
+    }
+
+    .perfil-codigo {
+        font-size: 16px;
+    }
+
+    .voltar {
+    left: 65px;
+    top: 100px;
+    }
+
+}
+
+
+@media (max-width: 480px) {
+    .perfil-foto img {
+        width: 120px;
+        height: 120px;
+    }
+
+    .perfil-nome {
+        font-size: 20px;
+    }
+
+    .perfil-codigo {
+        font-size: 14px;
+    }
+    
+    .voltar {
+    left: 65px;
+    top: 100px;
+    }
+}

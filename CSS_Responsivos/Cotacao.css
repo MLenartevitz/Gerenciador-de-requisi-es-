@@ -1,0 +1,195 @@
+/* Layout Responsivo Geral */
+.image {
+    background: var(--cor-fundo, #f4f4f4);
+    border-radius: 30px;
+    border: 1px solid #000000;
+    width: 95%;
+    max-width: 1200px;
+    min-height: 80vh;
+    padding: 20px;
+    margin: 20px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+}
+
+.container {
+    width: 95%;
+    max-width: 1000px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Tabelas */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    overflow-x: auto;
+    display: block;
+}
+
+th,
+td {
+    border: 2px solid #333;
+    padding: 8px;
+    text-align: center;
+}
+
+thead {
+    position: sticky;
+    top: 0;
+    background-color: #57b4e1;
+    color: white;
+}
+
+/* Botões */
+button {
+    padding: 8px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+.btn2 {
+    padding: 8px 16px;
+    margin: 5px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: #71d0ff;
+    color: white;
+    transition: background 0.3s ease;
+}
+
+button:hover {
+    background-color: #57b4e1;
+}
+
+/* Modal Responsivo */
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 100vh;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    overflow-y: auto;
+    z-index: 1000;
+}
+
+.modal.show {
+    display: flex;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 30px;
+    max-width: 95%;
+    width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+.fechar {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #888;
+    cursor: pointer;
+}
+
+.fechar:hover {
+    color: #000;
+}
+
+.voltar {
+    left: 350px;
+    top: 100px;
+}
+
+.image-4 {
+    width: 45px;
+    height: 45px;
+    left: 400px;
+}
+
+/* Formulário com espaçamento */
+.form-upload {
+    width: 100%;
+    margin-top: 120px; /* 👈 Ajusta a distância do topo */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Responsividade extra */
+@media (max-width: 768px) {
+
+    th,
+    td {
+        padding: 6px;
+        font-size: 14px;
+    }
+
+    .modal-content {
+        padding: 20px;
+    }
+    
+    .voltar {
+        left: 45px;
+        top: 75px;
+    }
+
+    .image-4 {
+        width: 45px;
+        height: 45px;
+        left: 100px;
+    }
+
+    .Cadastro-Cliente {
+        top: 200px;
+    }
+
+}
+
+@media (max-width: 480px) {
+
+    th,
+    td {
+        padding: 4px;
+        font-size: 12px;
+    }
+
+    button {
+        padding: 6px 12px;
+        font-size: 14px;
+    }
+
+    .voltar {
+        left: 45px;
+        top: 75px;
+    }
+
+    .image-4 {
+        width: 45px;
+        height: 45px;
+        left: 100px;
+    }
+
+    .Cadastro-Cliente {
+        top: 200px;
+    }
+
+}

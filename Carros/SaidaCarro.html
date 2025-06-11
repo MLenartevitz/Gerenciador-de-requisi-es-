@@ -4,10 +4,10 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Saída de Carro</title>    
-  <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">   
+  <title>Saída de Carro</title>
+  <link rel="icon" href="../img/trabalho-em-equipe.png" type="image/x-icon">
   <link rel="stylesheet" href="../style.css" />
-  <link rel="stylesheet" href="./Carro.css" />
+  <link rel="stylesheet" href="../CSS_Responsivos/Carro.css" />
 </head>
 
 <body>
@@ -18,7 +18,7 @@
         <button class="voltar" onclick="window.history.back();">
           <img src="../img/voltar0.png" alt="Voltar" />
         </button>
-        <button class="image-44" onclick="window.location.href='../Perfil/Perfil.html';">
+        <button class="image-4" onclick="window.location.href='../Perfil/Perfil.html';">
           <img src="../img/image-40.png" alt="Perfil" />
         </button>
       </header>
@@ -26,17 +26,17 @@
       <form id="formSaida" enctype="multipart/form-data" class="form-upload">
         <div class="espaço">
           <label for="data" id="labelData">Data Saída:</label>
-          <input type="date" id="data" class="input-info4" readonly>
+          <input type="date" id="data" class="input-info4" readonly />
         </div>
 
         <div class="espaço">
           <label for="hora" id="labelHora">Hora Saída:</label>
-          <input type="time" id="hora" class="input-info4" readonly>
+          <input type="time" id="hora" class="input-info4" readonly />
         </div>
 
         <div class="espaço">
           <label for="motorista">Motorista:</label>
-          <input id="motorista" class="input-info4" readonly>
+          <input id="motorista" class="input-info4" readonly />
         </div>
 
         <div class="espaço" id="campoCarro">
@@ -48,7 +48,7 @@
 
         <div class="espaço">
           <label for="km">Km:</label>
-          <input type="number" id="km" class="input-info4" required placeholder="12000km">
+          <input type="number" id="km" class="input-info4" required placeholder="12000km" />
         </div>
 
         <div class="espaço">
@@ -60,13 +60,13 @@
 
         <div class="espaço" id="campoOutro" style="display: none;">
           <label for="obs">Outro Motivo:</label>
-          <input type="text" id="obs" name="obs" class="input-info4" placeholder="Descreva o motivo de uso">
+          <input type="text" id="obs" name="obs" class="input-info4" placeholder="Descreva o motivo de uso" />
         </div>
 
         <label class="espaço" for="arquivoCotacao">Imagem Painel Km:</label>
         <input type="file" id="arquivoCotacao" name="arquivoCotacao" accept=".pdf,image/*" required />
 
-        <button type="submit">Enviar Informe de Saída</button>
+        <button class="btn2" type="submit">Enviar Informe de Saída</button>
         <p id="mensagem"></p>
 
         <!-- Feedback visual de carregamento (opcional) -->
